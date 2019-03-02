@@ -1,3 +1,10 @@
 #define LM_EMPTY 0
-#define LM_SET_RGB 1
-#define LM_SET_LED 1
+#define LM_SET_CLOSE 1
+#define LM_SET_RGB 2
+#define LM_SET_RGB_SPARK 3
+#define LM_SET_RGB_SPARK_PROGRESSIVE 4
+#define LM_SET_HSV 5
+#define LM_SET_HSV_SPARK 6
+#define LM_SET_HSV_PROGRESSIVE 7
+#define LM_SET_HSV_SPARK_PROGRESSIVE 8
+

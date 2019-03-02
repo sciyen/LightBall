@@ -1,6 +1,6 @@
 #include "Essentials.h"
 #include "Constants.h"
-char led_buffer[3];
+volatile char led_buffer[3];
 //int cmd_buffer[BUFFER_SIZE][CMD_PARAMETER_LENGTH];
 int buffer_counter;
 int buffer_excute_counter;
@@ -16,9 +16,9 @@ void led_init(){
 }
 
 void buffer_init(){
-    led_buffer[RED_LED_PIN]   = LED_CLOSE;
-    led_buffer[GREEN_LED_PIN] = LED_CLOSE;
-    led_buffer[BLUE_LED_PIN]  = LED_CLOSE;
+    led_buffer[LED_R_INDEX] = LED_CLOSE;
+    led_buffer[LED_G_INDEX] = LED_CLOSE;
+    led_buffer[LED_B_INDEX] = LED_CLOSE;
     buffer_counter = 0;
     buffer_excute_counter = 0;
     /*
@@ -30,10 +30,10 @@ void buffer_init(){
     buffer_start_time = millis();
 }
 
-void led_update(){
-    analogWrite(RED_LED_PIN,    led_buffer[0]);
-    analogWrite(GREEN_LED_PIN,  led_buffer[1]);
-    analogWrite(BLUE_LED_PIN,   led_buffer[2]);
+void inline led_update(){
+    analogWrite(RED_LED_PIN,    led_buffer[LED_R_INDEX]);
+    analogWrite(GREEN_LED_PIN,  led_buffer[LED_G_INDEX]);
+    analogWrite(BLUE_LED_PIN,   led_buffer[LED_B_INDEX]);
 }
 /*
 void set_cmd(int mode, int startTime, int period, int p1, int p2, int p3, int p4, int p5, int p6, int p7){
@@ -56,22 +56,58 @@ unsigned long inline get_buffer_start_time(){
 }
 
 void buffer_update(){
+    /* if the task work done, move to next task. */
+    if( (int)get_buffer_start_time() > 
+        cmd_buffer[buffer_excute_counter][BUFFER_START_TIME_BIT]
+      + cmd_buffer[buffer_excute_counter][BUFFER_PERIOD_BIT] ){
+        set_hsv_progressive_init();
+        set_rgb_spark_progressive_init();
+        buffer_excute_counter += 1;
+      }
+    
     /* if command buffer is a empty task, reset the counter and wait for next call. */
     if( cmd_buffer[buffer_excute_counter][BUFFER_MODE_BIT] == LM_EMPTY ){
-        buffer_excute_counter = 0;
+        buffer_init();
         return;
     }
-    /* if the task work done, move to next task. */
-    if( cmd_buffer[buffer_excute_counter][BUFFER_START_TIME_BIT]
-      + cmd_buffer[buffer_excute_counter][BUFFER_PERIOD_BIT] > (int)get_buffer_start_time() )
-        buffer_excute_counter += 1;
-        
+    
     /* if the task time is about to start */
     if( (int)get_buffer_start_time() > cmd_buffer[buffer_excute_counter][BUFFER_START_TIME_BIT] ){
-        switch(cmd_buffer[buffer_counter][BUFFER_MODE_BIT]){
+        switch(cmd_buffer[buffer_excute_counter][BUFFER_MODE_BIT]){
+            case LM_EMPTY:
+            case LM_SET_CLOSE: set_rgb(LED_CLOSE, LED_CLOSE, LED_CLOSE); break;
             case LM_SET_RGB: set_rgb(cmd_buffer[buffer_excute_counter][BUFFER_P1_BIT], 
                                      cmd_buffer[buffer_excute_counter][BUFFER_P2_BIT], 
                                      cmd_buffer[buffer_excute_counter][BUFFER_P3_BIT]); break;
+            case LM_SET_RGB_SPARK: set_rgb_spark(cmd_buffer[buffer_excute_counter][BUFFER_P1_BIT], 
+                                     cmd_buffer[buffer_excute_counter][BUFFER_P2_BIT], 
+                                     cmd_buffer[buffer_excute_counter][BUFFER_P3_BIT],
+                                     cmd_buffer[buffer_excute_counter][BUFFER_PERIOD_BIT],
+                                     cmd_buffer[buffer_excute_counter][BUFFER_P4_BIT]); break;
+            case LM_SET_RGB_SPARK_PROGRESSIVE: set_rgb_spark_progressive(cmd_buffer[buffer_excute_counter][BUFFER_P1_BIT], 
+                                     cmd_buffer[buffer_excute_counter][BUFFER_P2_BIT], 
+                                     cmd_buffer[buffer_excute_counter][BUFFER_P3_BIT],
+                                     cmd_buffer[buffer_excute_counter][BUFFER_PERIOD_BIT],
+                                     cmd_buffer[buffer_excute_counter][BUFFER_P4_BIT]); break;
+            case LM_SET_HSV: set_hsv(cmd_buffer[buffer_excute_counter][BUFFER_P1_BIT], 
+                                     cmd_buffer[buffer_excute_counter][BUFFER_P2_BIT], 
+                                     cmd_buffer[buffer_excute_counter][BUFFER_P3_BIT]); break;
+            case LM_SET_HSV_SPARK: set_hsv_spark(cmd_buffer[buffer_excute_counter][BUFFER_P1_BIT], 
+                                     cmd_buffer[buffer_excute_counter][BUFFER_P2_BIT], 
+                                     cmd_buffer[buffer_excute_counter][BUFFER_P3_BIT],
+                                     cmd_buffer[buffer_excute_counter][BUFFER_PERIOD_BIT],
+                                     cmd_buffer[buffer_excute_counter][BUFFER_P4_BIT]); break; 
+            case LM_SET_HSV_PROGRESSIVE: set_hsv_progressive(cmd_buffer[buffer_excute_counter][BUFFER_P1_BIT], 
+                                     cmd_buffer[buffer_excute_counter][BUFFER_P2_BIT], 
+                                     cmd_buffer[buffer_excute_counter][BUFFER_P3_BIT],
+                                     cmd_buffer[buffer_excute_counter][BUFFER_PERIOD_BIT],
+                                     cmd_buffer[buffer_excute_counter][BUFFER_P4_BIT]); break;                                                       
+            case LM_SET_HSV_SPARK_PROGRESSIVE: set_hsv_spark_progressive(cmd_buffer[buffer_excute_counter][BUFFER_P1_BIT], 
+                                     cmd_buffer[buffer_excute_counter][BUFFER_P2_BIT], 
+                                     cmd_buffer[buffer_excute_counter][BUFFER_P3_BIT],
+                                     cmd_buffer[buffer_excute_counter][BUFFER_PERIOD_BIT],
+                                     cmd_buffer[buffer_excute_counter][BUFFER_P4_BIT]); break; 
+                                     
         }
     }
 }
@@ -91,3 +127,25 @@ void hsv_test(){
     set_hsv(360, 255, 255);
 }
 
+void ISR_enable()
+{
+  TCCR2A = 0;
+  TCCR2B = 0; 
+  TCCR2B |= (1<<WGM22);  // CTC mode; Clear Timer on Compare
+  TCCR2B |= (1<<CS22) | (1<<CS20);  // Prescaler == 8 ||(1<<CS30)
+  TIMSK2 |= (1 << OCIE2A);  // enable CTC for TIMER1_COMPA_vect
+  TCNT2=0;  // counter 歸零 
+  OCR2A = 1000;
+}
+
+void ISR_disable()
+{
+  TCCR2A = 0;
+  TCCR2B = 0; 
+}
+
+
+ISR(TIMER2_COMPA_vect)
+{
+    led_update();
+}

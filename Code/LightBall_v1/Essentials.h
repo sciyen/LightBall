@@ -16,7 +16,10 @@
 #define  BLUE_LED_PIN   9
 #define  LED_OPEN 1
 #define LED_CLOSE 0
-extern char led_buffer[3];
+#define LED_R_INDEX 0
+#define LED_G_INDEX 1
+#define LED_B_INDEX 2
+extern volatile char led_buffer[3];
 
 /* LED BUFFER */
 #define         BUFFER_MODE_BIT 0
@@ -45,5 +48,7 @@ void led_update();
 unsigned long inline get_buffer_start_time();
 void buffer_update();
 void hsv_test();
+void ISR_enable();
+void ISR_disable();
 
 #endif
