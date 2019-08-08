@@ -1,0 +1,27 @@
+{
+    "main_text_group":{
+        "pos":[620, 100],
+        "size":[300, 200],
+        "buttons":[
+            {"name":"Start Time", "pos":[10, 30],    "size":[100, 30]},
+            {"name":"End Time",   "pos":[160, 30],    "size":[100, 30]},
+            {"name":"H", "pos":[10,  90],  "size":[80, 30]},
+            {"name":"S", "pos":[110, 90],  "size":[80, 30]},
+            {"name":"V", "pos":[210, 90],  "size":[80, 30]},
+            {"name":"H", "pos":[10,  140], "size":[80, 30]},
+            {"name":"S", "pos":[110, 140], "size":[80, 30]},
+            {"name":"V", "pos":[210, 140], "size":[80, 30]}
+        ]
+    },
+    "keypoint_text_group":{
+        "pos":[970, 100],
+        "size":[300, 150],
+        "buttons":[
+            {"name":"Key Point Time", "pos":[10, 30],    "size":[100, 30]},
+            {"name":"Duration",   "pos":[160, 30],    "size":[100, 30]},
+            {"name":"H", "pos":[10,  90],  "size":[80, 30]},
+            {"name":"S", "pos":[110, 90],  "size":[80, 30]},
+            {"name":"V", "pos":[210, 90],  "size":[80, 30]}
+        ]
+    }
+}

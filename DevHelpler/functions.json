@@ -1,0 +1,45 @@
+{
+    "effects":[
+        {"name":"Set RGB",
+         "Main":{
+             "Start Time":"auto",
+             "End Time":"auto",
+             "From":{
+                 "Red":0, 
+                 "Green":0, 
+                 "Blue":0},
+             "To":{
+                 "Red":0, 
+                 "Green":0, 
+                 "Blue":0}},
+         "KeyPoint":{
+             "KeyPointTime":"auto",
+             "Duration":0.1,
+             "Color":{
+                 "Red":0, 
+                 "Green":0, 
+                 "Blue":0}}
+        },
+        {"name":"Set HSV",
+         "Main":{
+             "Start Time":"auto",
+             "End Time":"auto",
+             "From":{
+                 "Hue":0, 
+                 "Saturation":0, 
+                 "Value":0},
+             "To":{
+                 "Hue":0, 
+                 "Saturation":0, 
+                 "Value":0}},
+         "KeyPoint":{
+             "KeyPointTime":"auto",
+             "Duration":0.1,
+             "Color":{
+                 "Hue":0, 
+                 "Saturation":0, 
+                 "Value":0}}
+        }
+    ]
+}
+
