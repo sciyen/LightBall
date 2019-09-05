@@ -8,6 +8,8 @@ void setup() {
     #endif
     ISR_disable();
     led_init();
+
+    while(digitalRead(BTN_PIN)) ;
     buffer_init();
     ISR_enable();
 }

@@ -28,5 +28,8 @@ void set_hsv_progressive(int h_start, int h_end, int v, int period, int fre);
 void set_hsv_spark_progressive(int h_start, int h_end, int v, int period, int fre);
 void set_rgb_spark_progressive_init();
 void set_rgb_spark_progressive(int r, int g, int b, int period, int fre);
+float HueToRGB(float v1, float v2, float vH);
+void set_hsl(int H, float S, float L);
+void set_hsl_progressive(unsigned int index, int h, int s, int l, int colorTrans, int brightTrans);
 
 #endif

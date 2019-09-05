@@ -11,9 +11,11 @@
 #include "Modes.h"
 
 /* LED */
+#define   BTN_PIN   10
+
 #define   RED_LED_PIN   5
-#define GREEN_LED_PIN   6
-#define  BLUE_LED_PIN   9
+#define GREEN_LED_PIN   9
+#define  BLUE_LED_PIN   6
 #define  LED_OPEN 1
 #define LED_CLOSE 0
 #define LED_R_INDEX 0

@@ -106,3 +106,51 @@ void set_hsv_spark_progressive(int h_start, int h_end, int v, int period, int fr
         delay(period/40);
     }
 }
+float HueToRGB(float v1, float v2, float vH)
+{
+  if (vH < 0)
+    vH += 1;
+
+  if (vH > 1)
+    vH -= 1;
+
+  if ((6 * vH) < 1)
+    return (v1 + (v2 - v1) * 6 * vH);
+
+  if ((2 * vH) < 1)
+    return v2;
+
+  if ((3 * vH) < 2)
+    return (v1 + (v2 - v1) * ((2.0f / 3) - vH) * 6);
+
+  return v1;
+};
+
+void set_hsl(int H, float S, float L) {
+  unsigned char R, G, B;
+
+  if (S == 0)
+  {
+    R = G = B = (unsigned char)(L * 255);
+  }
+  else
+  {
+    float v1, v2;
+    float hue = (float)H / 360;
+
+    v2 = (L < 0.5) ? (L * (1 + S)) : ((L + S) - (L * S));
+    v1 = 2 * L - v2;
+
+    R = (unsigned char)(255 * HueToRGB(v1, v2, hue + (1.0f / 3)));
+    G = (unsigned char)(255 * HueToRGB(v1, v2, hue));
+    B = (unsigned char)(255 * HueToRGB(v1, v2, hue - (1.0f / 3)));
+  }
+  set_rgb(R, G, B);
+};
+void set_hsl_progressive(unsigned int index, int h, int s, int l, int colorTrans, int brightTrans){
+    int n_h = h+colorTrans*index/1000;
+    int n_l = l+brightTrans*index/1000;
+    n_h = n_h%360;//(n_h<0)?0:(n_h>360?360:n_h);
+    n_l = n_l%255;//(n_l<0)?0:(n_l>255?255:n_l);
+    set_hsl(n_h, s/255.0, n_l/255.0);  // unit: H/1000s, L/1000s
+}

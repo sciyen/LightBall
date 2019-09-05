@@ -7,6 +7,7 @@ int buffer_excute_counter;
 unsigned long buffer_start_time;
 
 void led_init(){
+    pinMode(BTN_PIN, INPUT_PULLUP);
     pinMode(RED_LED_PIN,    OUTPUT);
     pinMode(GREEN_LED_PIN,  OUTPUT);
     pinMode(BLUE_LED_PIN,   OUTPUT);
@@ -57,12 +58,13 @@ unsigned long inline get_buffer_start_time(){
 
 void buffer_update(){
     /* if the task work done, move to next task. */
-    if( (int)get_buffer_start_time() > 
+    if( get_buffer_start_time() > 
         cmd_buffer[buffer_excute_counter][BUFFER_START_TIME_BIT]
       + cmd_buffer[buffer_excute_counter][BUFFER_PERIOD_BIT] ){
-        set_hsv_progressive_init();
-        set_rgb_spark_progressive_init();
+        //set_hsv_progressive_init();
+        //set_rgb_spark_progressive_init();
         buffer_excute_counter += 1;
+        set_rgb(LED_CLOSE, LED_CLOSE, LED_CLOSE);
       }
     
     /* if command buffer is a empty task, reset the counter and wait for next call. */
@@ -72,7 +74,7 @@ void buffer_update(){
     }
     
     /* if the task time is about to start */
-    if( (int)get_buffer_start_time() > cmd_buffer[buffer_excute_counter][BUFFER_START_TIME_BIT] ){
+    if( get_buffer_start_time() > cmd_buffer[buffer_excute_counter][BUFFER_START_TIME_BIT] ){
         switch(cmd_buffer[buffer_excute_counter][BUFFER_MODE_BIT]){
             case LM_EMPTY:
             case LM_SET_CLOSE: set_rgb(LED_CLOSE, LED_CLOSE, LED_CLOSE); break;
@@ -106,7 +108,14 @@ void buffer_update(){
                                      cmd_buffer[buffer_excute_counter][BUFFER_P2_BIT], 
                                      cmd_buffer[buffer_excute_counter][BUFFER_P3_BIT],
                                      cmd_buffer[buffer_excute_counter][BUFFER_PERIOD_BIT],
-                                     cmd_buffer[buffer_excute_counter][BUFFER_P4_BIT]); break; 
+                                     cmd_buffer[buffer_excute_counter][BUFFER_P4_BIT]); break;                                                    
+            case LM_SET_HSL_PROGRESSIVE: set_hsl_progressive(
+                                     (unsigned int)(get_buffer_start_time()-cmd_buffer[buffer_excute_counter][BUFFER_START_TIME_BIT]),
+                                     cmd_buffer[buffer_excute_counter][BUFFER_P1_BIT], 
+                                     cmd_buffer[buffer_excute_counter][BUFFER_P2_BIT], 
+                                     cmd_buffer[buffer_excute_counter][BUFFER_P3_BIT],
+                                     cmd_buffer[buffer_excute_counter][BUFFER_P4_BIT],
+                                     cmd_buffer[buffer_excute_counter][BUFFER_P5_BIT]); break; 
                                      
         }
     }
