@@ -1,1 +1,5 @@
 *.cache
+__pycache__
+*.swp
+*wav
+*.mp3
