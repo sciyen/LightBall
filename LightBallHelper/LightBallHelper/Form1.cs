@@ -32,6 +32,11 @@ namespace LightBallHelper {
         private Color keyColor;
         public static TimeSpan globalStartingTime;
 
+        /* Effect Attr */
+        const int maxEffectAttr = 5;
+        Label[] effectAttrLabel = new Label[maxEffectAttr];
+        TextBox[] effectAttrValue = new TextBox[maxEffectAttr];
+        Label[] effectAttrUnit = new Label[maxEffectAttr];
         public LightBallHelper() {
             InitializeComponent();
             labelNowTime.Text = prefixNowTime;
@@ -49,7 +54,7 @@ namespace LightBallHelper {
             timer1.Enabled = false;
             Bitmap bitmap = new Bitmap(Resource1.indicator);
             pictureBoxIndicator.BackColor = Color.Transparent;
-            pictureBoxIndicator.Location = new Point(START_POS-5, WAVE_LOC_Y-5);
+            pictureBoxIndicator.Location = new Point(START_POS - 5, WAVE_LOC_Y - 5);
             pictureBoxIndicator.Image = bitmap;
 
             UpdownOffset.Value = 50;
@@ -60,22 +65,38 @@ namespace LightBallHelper {
             comboBoxPeakCalculationStrategy.Items.Add("Scaled Average");
             comboBoxPeakCalculationStrategy.SelectedIndex = 0;
             comboBoxPeakCalculationStrategy.SelectedIndexChanged += (sender, args) => {
-                if ( !String.IsNullOrEmpty(fileName))
+                if ( !String.IsNullOrEmpty(fileName) )
                     RenderWaveform();
             };
 
             effectListObj = new List<Effects>();
 
-            effectsOptions.Items.Add("Color Transition");
-            //effectsList.DisplayMember = "Effect_Name";
+            effectsOptions.Items.Add(Effects.EffectsNames.EffectHSL.ToString());
+            effectsOptions.Items.Add(Effects.EffectsNames.EffectColorTransition.ToString());
+            effectsOptions.Items.Add(Effects.EffectsNames.EffectSparkAsync.ToString());
             keyColor = Color.AliceBlue;
             setColor(keyColor);
-            //effectsList.ValueMember = "Time_Info";
             globalStartingTime = TimeSpan.Zero;
             textBoxGlobalStarting.Text = getFormatedTimeString(globalStartingTime);
-            textBoxAddKeypointFixDuration.Text = "0.1";
-            textBoxAddKeypointFixSpace.Text = "0.3";
-            textBoxAddKeypointColorTran.Text = "0";
+
+            // Setup Effect Attr Objects
+            {
+                effectAttrLabel[0] = this.labelEffectAttr0;
+                effectAttrValue[0] = this.textBoxEffectAttr0;
+                effectAttrUnit[0] = this.unitEffectAttr0;
+                effectAttrLabel[1] = this.labelEffectAttr1;
+                effectAttrValue[1] = this.textBoxEffectAttr1;
+                effectAttrUnit[1] = this.unitEffectAttr1;
+                effectAttrLabel[2] = this.labelEffectAttr2;
+                effectAttrValue[2] = this.textBoxEffectAttr2;
+                effectAttrUnit[2] = this.unitEffectAttr2;
+                effectAttrLabel[3] = this.labelEffectAttr3;
+                effectAttrValue[3] = this.textBoxEffectAttr3;
+                effectAttrUnit[3] = this.unitEffectAttr3;
+                effectAttrLabel[4] = this.labelEffectAttr4;
+                effectAttrValue[4] = this.textBoxEffectAttr4;
+                effectAttrUnit[4] = this.unitEffectAttr4;
+            }
         }
         private void LightBallHelper_Paint(object sender, PaintEventArgs e) {
         }
@@ -112,7 +133,7 @@ namespace LightBallHelper {
             return string.Format("{0:D2}:{1:D2}:{2:D3}", (int)ts.TotalMinutes, ts.Seconds, ts.Milliseconds);
         }
         private void GenerateAudioFile() {
-            if (wavePlayer == null || audioFileReader == null) {
+            if ( wavePlayer == null || audioFileReader == null ) {
                 wavePlayer = CreateWavePlayer();
                 audioFileReader = new AudioFileReader(fileName);
                 wavePlayer.Init(audioFileReader);
@@ -139,11 +160,11 @@ namespace LightBallHelper {
             fileName = SelectInputFile();
         }
         void OnTimerTick(object sender, EventArgs e) {
-            if ( wavePlayer!=null && audioFileReader != null ) {
+            if ( wavePlayer != null && audioFileReader != null ) {
                 TimeSpan currentTime = (wavePlayer.PlaybackState == PlaybackState.Stopped) ? TimeSpan.Zero : audioFileReader.CurrentTime;
                 labelNowTime.Text = prefixNowTime + FormatTimeSpan(currentTime);
                 audioTrackBar.Value = Math.Min(audioTrackBar.Maximum, (int)(audioTrackBar.Maximum * currentTime.TotalSeconds / audioFileReader.TotalTime.TotalSeconds));
-                pictureBox1.Location = new Point(START_POS - (int)currentTime.TotalMilliseconds * SEC_PIXEL_RATIOL/1000, WAVE_LOC_Y);
+                pictureBox1.Location = new Point(START_POS - (int)currentTime.TotalMilliseconds * SEC_PIXEL_RATIOL / 1000, WAVE_LOC_Y);
             }
             else {
                 labelNowTime.Text = prefixNowTime + "00:00:000";
@@ -204,8 +225,8 @@ namespace LightBallHelper {
         }
 
         private void AudioTrackBar_Scroll(object sender, EventArgs e) {
-            if(wavePlayer!= null ) {
-                audioFileReader.CurrentTime = TimeSpan.FromSeconds(audioFileReader.TotalTime.TotalSeconds 
+            if ( wavePlayer != null ) {
+                audioFileReader.CurrentTime = TimeSpan.FromSeconds(audioFileReader.TotalTime.TotalSeconds
                     * audioTrackBar.Value / audioTrackBar.Maximum);
             }
         }
@@ -232,7 +253,7 @@ namespace LightBallHelper {
             //standardSettings.DecibelScale = checkBoxDecibels.Checked;
         }
         private void RenderWaveform() {
-            if ( String.IsNullOrEmpty(fileName)) return;
+            if ( String.IsNullOrEmpty(fileName) ) return;
             GetRendererSettings();
             //if ( imageFile != null ) {
             //    settings.BackgroundImage = new Bitmap(imageFile);
@@ -269,23 +290,28 @@ namespace LightBallHelper {
 
                 standardSettings.TopPeakPen = new Pen(BtnTopColour.BackColor);
                 standardSettings.BottomPeakPen = new Pen(BtnBottomColour.BackColor);
-                if( !String.IsNullOrEmpty(fileName) )
+                if ( !String.IsNullOrEmpty(fileName) )
                     RenderWaveform();
             }
         }
         #endregion Draw Wave Form
-        #region Main Effect
+        
         private void BtnBackwardMove_Click(object sender, EventArgs e) {
             audioFileReader.CurrentTime = audioFileReader.CurrentTime.Subtract(new TimeSpan(0, 0, 0, 0, (int)UpdownOffset.Value));
         }
-
         private void BtnForwardMove_Click(object sender, EventArgs e) {
             audioFileReader.CurrentTime = audioFileReader.CurrentTime.Add(new TimeSpan(0, 0, 0, 0, (int)UpdownOffset.Value));
         }
+        
+        #region Effect Add and Del
         private Effects getEffectsById(int i) {
             switch ( i ) {
                 case 0:
+                    return new EffectHSL(audioFileReader.CurrentTime);
+                case 1:
                     return new EffectColorTransition(audioFileReader.CurrentTime);
+                case 2:
+                    return new EffectSparkAsync(audioFileReader.CurrentTime);
                 default:
                     return new EffectColorTransition(audioFileReader.CurrentTime);
             }
@@ -308,44 +334,114 @@ namespace LightBallHelper {
                 effectsList.Items.RemoveAt(index);
             }
         }
-        private Boolean mainTextBoxLoading = false;
-        private void updateMainInputs() {
-            if ( effectsList.SelectedIndex >= 0) {
-                textBoxEffectName.Text = effectListObj[effectsList.SelectedIndex].effectName;
-                textBoxEffectStart.Text = getFormatedTimeString(effectListObj[effectsList.SelectedIndex].startTime);
-                textBoxEffectEnd.Text = getFormatedTimeString(effectListObj[effectsList.SelectedIndex].endTime);
-                textBoxEffectTransition.Text = effectListObj[effectsList.SelectedIndex].transition.ToString();
+        #endregion
+
+        #region Effect (Effect selection changed)
+        private void CheckBoxAutoGen_CheckedChanged(object sender, EventArgs e) {
+            Effects selected = effectListObj[effectsList.SelectedIndex];
+            if ( selected.autoGenMode != Effects.AutoGenMode.either && checkBoxAutoGen.Checked ) {
+                BtnAddKeypoint.Enabled = false;
+                BtnDelKeypoint.Enabled = false;
+                selected.autoGen = true;
+                keypointStartingColor.Text = "Effect Starting Color";
+                if ( selected.autoGenMode == Effects.AutoGenMode.either)
+                    BtnAutoGen.Enabled = true;
+            }
+            else {
+                BtnAddKeypoint.Enabled = true;
+                BtnDelKeypoint.Enabled = true;
+                selected.autoGen = false;
+                keypointStartingColor.Text = "Keypoint Starting Color";
+                if ( selected.autoGenMode == Effects.AutoGenMode.either )
+                    BtnAutoGen.Enabled = false;
             }
         }
-        private void setMainInputs() {
+        /* Prevent recursive setting while reloading effect attributes. */
+        private bool mainTextBoxLoading = false;
+        private void EffectAutoGen_TextChanged(object sender, EventArgs e) {
+            Effects selected = effectListObj[effectsList.SelectedIndex];
             if ( !mainTextBoxLoading && effectsList.SelectedIndex >= 0 ) {
-                effectListObj[effectsList.SelectedIndex].Effect_Name = textBoxEffectName.Text;
-                effectListObj[effectsList.SelectedIndex].startTime = getTimeSpanFromString(textBoxEffectStart.Text);
-                effectListObj[effectsList.SelectedIndex].endTime = getTimeSpanFromString(textBoxEffectEnd.Text);
-                if ( !double.TryParse(textBoxEffectTransition.Text, out effectListObj[effectsList.SelectedIndex].transition) )
-                    MessageBox.Show("Double Format Error!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                effectsList.Items[effectsList.SelectedIndex] = effectListObj[effectsList.SelectedIndex].Effect_Name;
+                /* Effect Auto Gen*/
+                if ( selected.autoGenMode != Effects.AutoGenMode.disable ) {
+                    for ( int i = 0; i < maxEffectAttr; i++ ) {
+                        if ( selected.para_len > i ) {
+                            selected.para_label[i] = effectAttrLabel[i].Text;
+                            selected.para_value[i] = effectAttrValue[i].Text;
+                            selected.para_unit[i] = effectAttrUnit[i].Text;
+                        }
+                    }
+                }
             }
+        }
+        private void EffectSetting_TextChanged(object sender, EventArgs e) {
+            if ( !mainTextBoxLoading && effectsList.SelectedIndex >= 0 ) {
+                Effects selected = effectListObj[effectsList.SelectedIndex];
+                selected.startTime = getTimeSpanFromString(textBoxEffectStart.Text);
+                selected.endTime = getTimeSpanFromString(textBoxEffectEnd.Text);
+                // Update name in listbox
+                effectsList.Items[effectsList.SelectedIndex] = selected.Effect_Name;
+            }
+        }
+        private void reloadEffect() {
+            Effects selected = effectListObj[effectsList.SelectedIndex];
+            /* Effect Setting*/
+            textBoxEffectName.Text = selected.effectName.ToString();                        // Name
+            textBoxEffectStart.Text = getFormatedTimeString(selected.startTime);            // Start time 
+            textBoxEffectEnd.Text = getFormatedTimeString(selected.endTime);                //End time
+            textBoxEffectDuration.Text = (selected.endTime - selected.startTime).TotalSeconds.ToString(); // Duration
+
+            /* Effect Attr*/
+            if ( selected.autoGenMode == Effects.AutoGenMode.enable )
+                checkBoxAutoGen.Checked = true;
+
+            if ( selected.autoGenMode != Effects.AutoGenMode.either )
+                checkBoxAutoGen.Enabled = false;
+            else
+                checkBoxAutoGen.Enabled = true;
+
+            if ( selected.autoGenMode != Effects.AutoGenMode.disable ) {
+                for ( int i = 0; i < maxEffectAttr; i++ ) {
+                    if ( selected.para_len > i ) {
+                        effectAttrValue[i].Enabled = true;
+                        effectAttrLabel[i].Text = selected.para_label[i];
+                        effectAttrValue[i].Text = selected.para_value[i];
+                        effectAttrUnit[i].Text = selected.para_unit[i];
+                    }
+                    else
+                        effectAttrValue[i].Enabled = false;
+                }
+            }
+
+            if ( selected.autoGenMode == Effects.AutoGenMode.either && checkBoxAutoGen.Checked )
+                BtnAutoGen.Enabled = true;
+            else
+                BtnAutoGen.Enabled = false;
         }
         private void EffectsList_SelectedIndexChanged(object sender, EventArgs e) {
-            mainTextBoxLoading = true;
-            updateMainInputs();
-            mainTextBoxLoading = false;
-
-            keypointsList.Items.Clear();
             if ( effectsList.SelectedIndex >= 0 ) {
+                mainTextBoxLoading = true;
+                reloadEffect();  // Reload Effect Setting and Auto Gen
+                mainTextBoxLoading = false;
+
+                keypointsList.Items.Clear();
                 effectListObj[effectsList.SelectedIndex].keypoints.ForEach((keypoint) =>
                 {
                     keypointsList.Items.Add(keypoint.Time_Info);
                 });
             }
-            
         }
-        private void MainInputsTextBox_TextChanged(object sender, EventArgs e) {
-            setMainInputs();
+        private void BtnSetStartNowtime_Click(object sender, EventArgs e) {
+            textBoxEffectStart.Text = audioFileReader != null ? getFormatedTimeString(audioFileReader.CurrentTime) : "0";
+            EffectSetting_TextChanged(sender, e);
+        }
+        private void BtnSetEndNowtime_Click(object sender, EventArgs e) {
+            textBoxEffectEnd.Text = audioFileReader != null ? getFormatedTimeString(audioFileReader.CurrentTime) : "0";
+            EffectSetting_TextChanged(sender, e);
         }
         #endregion
+
         #region Color Trans
+        /*
         Color SetHue(Color oldColor) {
             var temp = new HSV();
             temp.h = oldColor.GetHue();
@@ -364,6 +460,8 @@ namespace LightBallHelper {
 
         // the Color Converter
         static public Color ColorFromHSL(HSV hsl) {
+            hsl.h %= 360;
+            hsl.v = (hsl.v < 0 ? 0 : hsl.v);
             if ( hsl.s == 0 ) { int L = (int)hsl.v; return Color.FromArgb(255, L, L, L); }
 
             double min, max, h;
@@ -388,105 +486,122 @@ namespace LightBallHelper {
 
         }
         float getBrightness(Color c) { return (c.R * 0.299f + c.G * 0.587f + c.B * 0.114f) / 256f; }
+        */
         #endregion
         #region Color Selector
         private void setColor(Color color) {
             keyColor = color;
             BtnColorShowStart.BackColor = color;
-            textBoxColorH.Text = color.GetHue().ToString();
-            textBoxColorS.Text = color.GetSaturation().ToString();
-            textBoxColorV.Text = getBrightness(color).ToString();
-            textBoxColorR.Text = color.R.ToString();
-            textBoxColorG.Text = color.G.ToString();
-            textBoxColorB.Text = color.B.ToString();
-            trackBarColorSelect.Value = (int)color.GetHue() <= 0 ? 1 : (int)color.GetHue();
-            trackBarLightness.Value = (int)(getBrightness(color)*100) <= 0 ? 1: (int)(getBrightness(color) * 100);
+            labelColorH.Text = "H= " + Math.Round(color.GetHue(), 0).ToString();
+            labelColorS.Text = "S= " + Math.Round(color.GetSaturation(), 2).ToString();
+            labelColorL.Text = "L= " + Math.Round(color.GetBrightness(), 2).ToString();
             setShowEndColor(color);
         }
         private void setShowEndColor(Color color) {
+            HSLColor hsl = new HSLColor(color);
+            HSLColor hsl2;
+            labelColorH.Text = "H= " + hsl.Hue.ToString();
+            Color col = hsl2 = hsl.offsetColor(
+                getDoubleFromString(textBoxKeypointDuration.Text)* getDoubleFromString(textBoxKeypointDuty.Text)/100.0,
+                getDoubleFromString(textBoxColorTransition.Text),
+                getDoubleFromString(textBoxBrightTransition.Text));
+            BtnColorShowEnd.BackColor = col;
+            //labelEndColorH.Text = "H= " + Math.Round(col.GetHue(), 0).ToString();
+            labelEndColorH.Text = "H= " + hsl2.Hue.ToString();
+            labelEndColorS.Text = "S= " + Math.Round(col.GetSaturation(), 2).ToString();
+            labelEndColorL.Text = "L= " + Math.Round(col.GetBrightness(), 2).ToString();
+            /*
             BtnColorShowEnd.BackColor = ColorFromHSL(
                 new HSV(color.GetHue() + (getDoubleFromString(textBoxColorTransition.Text) * getDoubleFromString(textBoxKeypointDuration.Text))
                 , color.GetSaturation()
                 , getBrightness(color) + (getDoubleFromString(textBoxBrightTransition.Text) * getDoubleFromString(textBoxKeypointDuration.Text))));
-        }
-        private void showEndColor_Changed(object sender, EventArgs e) {
-            setShowEndColor(keyColor);
-        }
-        private void setColorWithRGBTextBox(object sender, EventArgs e) {
-            Color new_color = Color.FromArgb(
-                getIntFromString(textBoxColorR.Text),
-                getIntFromString(textBoxColorG.Text),
-                getIntFromString(textBoxColorB.Text));
-            setColor(new_color);
-        }
-        private void setColorWithHSVTextBox(object sender, EventArgs e) {
-            int r,g,b;
-            Color new_color = ColorFromHSL(new HSV(getDoubleFromString(textBoxColorH.Text),
-                getDoubleFromString(textBoxColorS.Text),
-                getDoubleFromString(textBoxColorV.Text)));
-            setColor(new_color);
-        }
-        private void setColorWithTrackBar(object sender, EventArgs e) {
-            int r,g,b;
-            Color new_color = ColorFromHSL(new HSV(trackBarColorSelect.Value,
-                getDoubleFromString(textBoxColorS.Text),
-                trackBarLightness.Value/100.0));
-                setColor(new_color);
+            */
         }
         #endregion
+        #region Keypoint
+        private bool keypointTextBoxLoading = false;
         private void updateKeypointInputs() {
-            if (keypointsList.SelectedIndex >= 0 ) {
+            if ( effectsList.SelectedIndex >= 0 && keypointsList.SelectedIndex >= 0 ) {
                 KeyPoint target = effectListObj[effectsList.SelectedIndex].keypoints[keypointsList.SelectedIndex];
                 textBoxColorStart.Text = getFormatedTimeString(target.startTime);
                 textBoxKeypointDuration.Text = target.duration.ToString();
+                textBoxKeypointDuty.Text = target.duty.ToString();
                 setColor(target.color);
                 textBoxColorTransition.Text = target.colorTransition.ToString();
                 textBoxBrightTransition.Text = target.brightTransition.ToString();
             }
         }
         private void setKeypointInputs() {
-            if ( keypointsList.SelectedIndex >= 0 ) {
-                effectListObj[effectsList.SelectedIndex].keypoints[keypointsList.SelectedIndex].startTime = getTimeSpanFromString(textBoxColorStart.Text);
-                effectListObj[effectsList.SelectedIndex].keypoints[keypointsList.SelectedIndex].duration = getDoubleFromString(textBoxKeypointDuration.Text);
-                effectListObj[effectsList.SelectedIndex].keypoints[keypointsList.SelectedIndex].color = keyColor;
-                effectListObj[effectsList.SelectedIndex].keypoints[keypointsList.SelectedIndex].colorTransition = getDoubleFromString(textBoxColorTransition.Text);
-                effectListObj[effectsList.SelectedIndex].keypoints[keypointsList.SelectedIndex].colorTransition = getDoubleFromString(textBoxBrightTransition.Text);
-                keypointsList.Items[keypointsList.SelectedIndex] = effectListObj[effectsList.SelectedIndex].keypoints[keypointsList.SelectedIndex].Time_Info;
+            if (  keypointsList.SelectedIndex >= 0 ) {
+                KeyPoint target = effectListObj[effectsList.SelectedIndex].keypoints[keypointsList.SelectedIndex];
+                target.startTime = getTimeSpanFromString(textBoxColorStart.Text);
+                target.duration = getDoubleFromString(textBoxKeypointDuration.Text);
+                target.duty = getDoubleFromString(textBoxKeypointDuty.Text);
+                target.color = keyColor;
+                target.colorTransition = getDoubleFromString(textBoxColorTransition.Text);
+                target.brightTransition = getDoubleFromString(textBoxBrightTransition.Text);
+                keypointsList.Items[keypointsList.SelectedIndex] = target.Time_Info;
             }
         }
         private void KeypointsList_SelectedIndexChanged(object sender, EventArgs e) {
-            updateKeypointInputs();
+            if ( keypointsList.SelectedIndex >= 0 ) {
+                keypointTextBoxLoading = true;
+                updateKeypointInputs();
+                keypointTextBoxLoading = false;
+            }
         }
         private void BtnAddKeypoint_Click(object sender, EventArgs e) {
-            if (effectsList.SelectedIndex < 0)
+            if ( effectsList.SelectedIndex < 0 )
                 MessageBox.Show("Please select a effect first!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else if (keypointsList.SelectedIndex < 0 )
+            else if ( keypointsList.SelectedIndex < 0 )
                 MessageBox.Show("Please select a keypoint first!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else {
-                Color color = keyColor;
-                if ( checkBoxAddKeypointColorTran.Checked ) {
-                    Color starting_color = effectListObj[effectsList.SelectedIndex].keypoints[0].color;
-                    color = ColorFromHSL(
-                        new HSV(color.GetHue() + (getDoubleFromString(textBoxAddKeypointColorTran.Text) * (audioFileReader.CurrentTime.Subtract(effectListObj[effectsList.SelectedIndex].keypoints[0].startTime).TotalSeconds))
-                        , starting_color.GetSaturation()
-                        , getBrightness(starting_color) ));
-                }
+            // Allow to create keypoint
+            else if (effectListObj[effectsList.SelectedIndex].autoGenMode ==   Effects.AutoGenMode.either ) {
+                //Common attribute
                 KeyPoint new_keypoint;
-                if ( checkBoxAddKeypointFixSpace.Checked ) {
-                    TimeSpan space=  TimeSpan.FromSeconds(getDoubleFromString(textBoxAddKeypointFixSpace.Text));
-                    double dur = audioFileReader.CurrentTime.Subtract(effectListObj[effectsList.SelectedIndex].keypoints[keypointsList.SelectedIndex].startTime).Subtract(space).TotalSeconds;
-                    new_keypoint = new KeyPoint(audioFileReader.CurrentTime, color, dur);
-                } 
-                else if ( checkBoxAddKeypointFixDuration.Checked ) {
-                    double dur = getDoubleFromString(textBoxAddKeypointFixDuration.Text);
-                    new_keypoint = new KeyPoint(audioFileReader.CurrentTime, color, dur);
+                Effects selected = effectListObj[effectsList.SelectedIndex];
+                double dur=0, duty=0, colorTran=0, brightTran=0;
+                Color color = keyColor;
+                // Code assistent generation (NOT auto generation for all )
+                // Only Auto Gen mode is either can do this
+                if ( checkBoxAutoGen.Checked ) {
+                    // Create keypoint according to last keypoint
+                    for ( int i = 0; i < selected.para_len; i++ ) {
+                        if ( selected.para_label[i] == "Duration" )
+                            dur = getDoubleFromString(effectAttrValue[i].Text);
+                        if ( selected.para_label[i] == "Duty" )
+                            duty = getDoubleFromString(effectAttrValue[i].Text);
+                        if ( selected.para_label[i] == "ColorTran" )
+                            colorTran = getDoubleFromString(effectAttrValue[i].Text);
+                        if ( selected.para_label[i] == "BrightTran" )
+                            brightTran = getDoubleFromString(effectAttrValue[i].Text);
+                    }
+                    Color starting_color = selected.keypoints[0].color;
+                    color = new HSLColor(starting_color).offsetColor(
+                        (audioFileReader.CurrentTime.Subtract(selected.keypoints[0].startTime).TotalSeconds),
+                        colorTran, brightTran);
+                    /*
+                    color = ColorFromHSL(
+                        new HSV(color.GetHue() + (colorTran * (audioFileReader.CurrentTime.Subtract(selected.keypoints[0].startTime).TotalSeconds))
+                        , starting_color.GetSaturation()
+                        , getBrightness(starting_color) + (brightTran * (audioFileReader.CurrentTime.Subtract(selected.keypoints[0].startTime).TotalSeconds))));
+                    */
                 }
-                else
-                    new_keypoint = new KeyPoint(audioFileReader.CurrentTime, color);
+                else {
+                    if (keypointsList.SelectedIndex >= 0 ) {
+                        // The previous keypoint setting (If it exist)
+                        KeyPoint last_point = effectListObj[effectsList.SelectedIndex].keypoints[keypointsList.SelectedIndex];
+                        dur = last_point.duration;
+                        duty = last_point.duty;
+                        colorTran = last_point.colorTransition;
+                        brightTran = last_point.brightTransition;
+                    }
+                }
+                new_keypoint = new KeyPoint(audioFileReader.CurrentTime, color, dur, duty, colorTran, brightTran);
                 effectListObj[effectsList.SelectedIndex].keypoints.Add(new_keypoint);
                 keypointsList.Items.Add(new_keypoint.Time_Info);
                 keypointsList.SelectedIndex += 1;
-                audioFileReader.CurrentTime = audioFileReader.CurrentTime.Add(new TimeSpan(0, 0, 0, 0, (int)UpdownOffset.Value));
+                audioFileReader.CurrentTime = audioFileReader.CurrentTime.Add(TimeSpan.FromSeconds(dur));
             }
         }
         private void BtnDelKeypoint_Click(object sender, EventArgs e) {
@@ -500,24 +615,26 @@ namespace LightBallHelper {
                 keypointsList.Items.RemoveAt(index);
             }
         }
-        private void BtnKeypointSave_Click(object sender, EventArgs e) {
+        private void KeypointSetting_TextChanged(object sender, EventArgs e) {
             setKeypointInputs();
-        }
-        private void BtnSetStartNowtime_Click(object sender, EventArgs e) {
-            textBoxEffectStart.Text = audioFileReader != null ? getFormatedTimeString(audioFileReader.CurrentTime) : "0";
-            setMainInputs();
-        }
-        private void BtnSetEndNowtime_Click(object sender, EventArgs e) {
-            textBoxEffectEnd.Text = audioFileReader != null ? getFormatedTimeString(audioFileReader.CurrentTime) : "0";
-            setMainInputs();
-        }
-        private void BtnSetGlobalStarting_Click(object sender, EventArgs e) {
-            textBoxGlobalStarting.Text = audioFileReader != null ? getFormatedTimeString(audioFileReader.CurrentTime) : "0";
-            globalStartingTime = audioFileReader.CurrentTime;
         }
         private void BtnSetColorNowtime_Click(object sender, EventArgs e) {
             textBoxColorStart.Text = audioFileReader != null ? getFormatedTimeString(audioFileReader.CurrentTime) : "0";
             setKeypointInputs();
+        }
+        private void showEndColor_Changed(object sender, EventArgs e) {
+            setShowEndColor(keyColor);
+            setKeypointInputs();
+        }
+        private void BtnKeypointSave_Click(object sender, EventArgs e) {
+            setKeypointInputs();
+        }
+        #endregion
+
+        #region Set Configuration
+        private void BtnSetGlobalStarting_Click(object sender, EventArgs e) {
+            textBoxGlobalStarting.Text = audioFileReader != null ? getFormatedTimeString(audioFileReader.CurrentTime) : "0";
+            globalStartingTime = audioFileReader.CurrentTime;
         }
         private void BtnHistorySave_Click(object sender, EventArgs e) {
             var ofd = new SaveFileDialog();
@@ -530,7 +647,7 @@ namespace LightBallHelper {
             var ofd = new OpenFileDialog();
             ofd.Filter = "LightBallHistory|*.lbh";
             if ( ofd.ShowDialog() == DialogResult.OK ) {
-                Effects.LoadHistory(ofd.FileName, out effectListObj);
+                Effects.RestoreHistory(ofd.FileName, out effectListObj);
                 effectsList.Items.Clear();
                 effectListObj.ForEach((eff) =>
                 {
@@ -545,20 +662,19 @@ namespace LightBallHelper {
                 Effects.ExportTasks(ofd.FileName, effectListObj);
             }
         }
+
+        #endregion
         private void BtnColorShowStart_Click(object sender, EventArgs e) {
             ColorDialog colorDlg = new ColorDialog();
             colorDlg.Color = keyColor;
             if ( colorDlg.ShowDialog() == DialogResult.OK ) {
                 setColor(colorDlg.Color);
             }
+            setKeypointInputs();
         }
-        private void CheckBoxAddKeypointFixDuration_CheckedChanged(object sender, EventArgs e) {
-            if ( checkBoxAddKeypointFixSpace.Checked )
-                checkBoxAddKeypointFixSpace.Checked = false;
-        }
-        private void CheckBoxAddKeypointFixSpace_CheckedChanged(object sender, EventArgs e) {
-            if ( checkBoxAddKeypointFixDuration.Checked )
-                checkBoxAddKeypointFixDuration.Checked = false;
+
+        private void BtnAutoGen_Click(object sender, EventArgs e) {
+
         }
     }
 }

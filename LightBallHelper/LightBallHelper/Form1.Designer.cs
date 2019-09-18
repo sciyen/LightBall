@@ -62,25 +62,9 @@
             this.textBoxEffectEnd = new System.Windows.Forms.TextBox();
             this.pictureBoxIndicator = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.trackBarColorSelect = new System.Windows.Forms.TrackBar();
-            this.pictureBoxColorBar = new System.Windows.Forms.PictureBox();
-            this.trackBarLightness = new System.Windows.Forms.TrackBar();
-            this.textBoxColorR = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBoxColorG = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBoxColorB = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBoxColorH = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBoxColorS = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBoxColorV = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.BtnColorShowStart = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
             this.keypointStartingColor = new System.Windows.Forms.GroupBox();
-            this.textBoxKeypointSpace = new System.Windows.Forms.TextBox();
+            this.textBoxKeypointDuty = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.BtnSetColorNowtime = new System.Windows.Forms.Button();
@@ -96,47 +80,60 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.textBoxColorStart = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.effect = new System.Windows.Forms.Label();
             this.textBoxEffectName = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.textBoxEffectTransition = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
             this.BtnSetStartNowtime = new System.Windows.Forms.Button();
             this.BtnSetEndNowtime = new System.Windows.Forms.Button();
             this.BtnHistorySave = new System.Windows.Forms.Button();
             this.BtnHistoryLoad = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.textBoxEffectDuration = new System.Windows.Forms.TextBox();
             this.BtnExport = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.BtnSetGlobalStarting = new System.Windows.Forms.Button();
+            this.label32 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
+            this.textBoxNumberOfBalls = new System.Windows.Forms.TextBox();
             this.textBoxGlobalStarting = new System.Windows.Forms.TextBox();
-            this.textBoxAddKeypointFixDuration = new System.Windows.Forms.TextBox();
-            this.checkBoxAddKeypointFixDuration = new System.Windows.Forms.CheckBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.checkBoxAddKeypointFixSpace = new System.Windows.Forms.CheckBox();
-            this.textBoxAddKeypointFixSpace = new System.Windows.Forms.TextBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.checkBoxAddKeypointColorTran = new System.Windows.Forms.CheckBox();
-            this.textBoxAddKeypointColorTran = new System.Windows.Forms.TextBox();
+            this.textBoxEffectAttr1 = new System.Windows.Forms.TextBox();
+            this.unitEffectAttr1 = new System.Windows.Forms.Label();
+            this.unitEffectAttr2 = new System.Windows.Forms.Label();
+            this.textBoxEffectAttr2 = new System.Windows.Forms.TextBox();
+            this.unitEffectAttr3 = new System.Windows.Forms.Label();
+            this.textBoxEffectAttr3 = new System.Windows.Forms.TextBox();
+            this.unitEffectAttr0 = new System.Windows.Forms.Label();
+            this.textBoxEffectAttr0 = new System.Windows.Forms.TextBox();
+            this.checkBoxAutoGen = new System.Windows.Forms.CheckBox();
+            this.labelEffectAttr0 = new System.Windows.Forms.Label();
+            this.labelEffectAttr1 = new System.Windows.Forms.Label();
+            this.labelEffectAttr2 = new System.Windows.Forms.Label();
+            this.labelEffectAttr3 = new System.Windows.Forms.Label();
+            this.textBoxEffectAttr4 = new System.Windows.Forms.TextBox();
+            this.unitEffectAttr4 = new System.Windows.Forms.Label();
+            this.labelEffectAttr4 = new System.Windows.Forms.Label();
+            this.groupBoxEffectAuto = new System.Windows.Forms.GroupBox();
+            this.BtnAutoGen = new System.Windows.Forms.Button();
+            this.labelColorH = new System.Windows.Forms.Label();
+            this.labelColorS = new System.Windows.Forms.Label();
+            this.labelColorL = new System.Windows.Forms.Label();
+            this.labelEndColorH = new System.Windows.Forms.Label();
+            this.labelEndColorS = new System.Windows.Forms.Label();
+            this.labelEndColorL = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.audioTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.updownTopHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.updownBottomHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UpdownOffset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIndicator)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarColorSelect)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxColorBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarLightness)).BeginInit();
             this.keypointStartingColor.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBoxEffectAuto.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnLoadFile
@@ -276,7 +273,7 @@
             this.effectsOptions.Location = new System.Drawing.Point(26, 34);
             this.effectsOptions.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.effectsOptions.Name = "effectsOptions";
-            this.effectsOptions.Size = new System.Drawing.Size(115, 384);
+            this.effectsOptions.Size = new System.Drawing.Size(115, 365);
             this.effectsOptions.TabIndex = 14;
             // 
             // effectsList
@@ -286,7 +283,7 @@
             this.effectsList.Location = new System.Drawing.Point(149, 34);
             this.effectsList.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.effectsList.Name = "effectsList";
-            this.effectsList.Size = new System.Drawing.Size(200, 384);
+            this.effectsList.Size = new System.Drawing.Size(200, 365);
             this.effectsList.TabIndex = 15;
             this.effectsList.SelectedIndexChanged += new System.EventHandler(this.EffectsList_SelectedIndexChanged);
             // 
@@ -297,7 +294,7 @@
             this.keypointsList.Location = new System.Drawing.Point(357, 34);
             this.keypointsList.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.keypointsList.Name = "keypointsList";
-            this.keypointsList.Size = new System.Drawing.Size(200, 384);
+            this.keypointsList.Size = new System.Drawing.Size(200, 365);
             this.keypointsList.TabIndex = 16;
             this.keypointsList.SelectedIndexChanged += new System.EventHandler(this.KeypointsList_SelectedIndexChanged);
             // 
@@ -352,7 +349,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1180, 437);
+            this.label1.Location = new System.Drawing.Point(1179, 437);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 19);
@@ -362,7 +359,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1180, 472);
+            this.label2.Location = new System.Drawing.Point(1179, 472);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(103, 19);
@@ -426,7 +423,7 @@
             this.textBoxEffectStart.Name = "textBoxEffectStart";
             this.textBoxEffectStart.Size = new System.Drawing.Size(112, 27);
             this.textBoxEffectStart.TabIndex = 27;
-            this.textBoxEffectStart.Leave += new System.EventHandler(this.MainInputsTextBox_TextChanged);
+            this.textBoxEffectStart.Leave += new System.EventHandler(this.EffectSetting_TextChanged);
             // 
             // label4
             // 
@@ -455,7 +452,7 @@
             this.textBoxEffectEnd.Name = "textBoxEffectEnd";
             this.textBoxEffectEnd.Size = new System.Drawing.Size(112, 27);
             this.textBoxEffectEnd.TabIndex = 29;
-            this.textBoxEffectEnd.Leave += new System.EventHandler(this.MainInputsTextBox_TextChanged);
+            this.textBoxEffectEnd.Leave += new System.EventHandler(this.EffectSetting_TextChanged);
             // 
             // pictureBoxIndicator
             // 
@@ -477,158 +474,9 @@
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             // 
-            // trackBarColorSelect
-            // 
-            this.trackBarColorSelect.Location = new System.Drawing.Point(71, 86);
-            this.trackBarColorSelect.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.trackBarColorSelect.Maximum = 360;
-            this.trackBarColorSelect.Minimum = 1;
-            this.trackBarColorSelect.Name = "trackBarColorSelect";
-            this.trackBarColorSelect.Size = new System.Drawing.Size(305, 56);
-            this.trackBarColorSelect.TabIndex = 43;
-            this.trackBarColorSelect.Value = 1;
-            this.trackBarColorSelect.Scroll += new System.EventHandler(this.setColorWithTrackBar);
-            // 
-            // pictureBoxColorBar
-            // 
-            this.pictureBoxColorBar.Image = global::LightBallHelper.ColorBar.color_bar;
-            this.pictureBoxColorBar.Location = new System.Drawing.Point(85, 119);
-            this.pictureBoxColorBar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.pictureBoxColorBar.Name = "pictureBoxColorBar";
-            this.pictureBoxColorBar.Size = new System.Drawing.Size(274, 34);
-            this.pictureBoxColorBar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxColorBar.TabIndex = 44;
-            this.pictureBoxColorBar.TabStop = false;
-            // 
-            // trackBarLightness
-            // 
-            this.trackBarLightness.Location = new System.Drawing.Point(71, 159);
-            this.trackBarLightness.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.trackBarLightness.Maximum = 100;
-            this.trackBarLightness.Minimum = 1;
-            this.trackBarLightness.Name = "trackBarLightness";
-            this.trackBarLightness.Size = new System.Drawing.Size(305, 56);
-            this.trackBarLightness.TabIndex = 45;
-            this.trackBarLightness.Value = 1;
-            this.trackBarLightness.Scroll += new System.EventHandler(this.setColorWithTrackBar);
-            // 
-            // textBoxColorR
-            // 
-            this.textBoxColorR.Location = new System.Drawing.Point(185, 207);
-            this.textBoxColorR.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBoxColorR.Name = "textBoxColorR";
-            this.textBoxColorR.Size = new System.Drawing.Size(51, 27);
-            this.textBoxColorR.TabIndex = 31;
-            this.textBoxColorR.Leave += new System.EventHandler(this.setColorWithRGBTextBox);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(181, 186);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(19, 19);
-            this.label6.TabIndex = 32;
-            this.label6.Text = "R";
-            // 
-            // textBoxColorG
-            // 
-            this.textBoxColorG.Location = new System.Drawing.Point(245, 207);
-            this.textBoxColorG.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBoxColorG.Name = "textBoxColorG";
-            this.textBoxColorG.Size = new System.Drawing.Size(51, 27);
-            this.textBoxColorG.TabIndex = 33;
-            this.textBoxColorG.Leave += new System.EventHandler(this.setColorWithRGBTextBox);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(242, 186);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(20, 19);
-            this.label7.TabIndex = 34;
-            this.label7.Text = "G";
-            // 
-            // textBoxColorB
-            // 
-            this.textBoxColorB.Location = new System.Drawing.Point(304, 207);
-            this.textBoxColorB.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBoxColorB.Name = "textBoxColorB";
-            this.textBoxColorB.Size = new System.Drawing.Size(51, 27);
-            this.textBoxColorB.TabIndex = 35;
-            this.textBoxColorB.Leave += new System.EventHandler(this.setColorWithRGBTextBox);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(301, 186);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(18, 19);
-            this.label8.TabIndex = 36;
-            this.label8.Text = "B";
-            // 
-            // textBoxColorH
-            // 
-            this.textBoxColorH.Location = new System.Drawing.Point(185, 254);
-            this.textBoxColorH.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBoxColorH.Name = "textBoxColorH";
-            this.textBoxColorH.Size = new System.Drawing.Size(51, 27);
-            this.textBoxColorH.TabIndex = 37;
-            this.textBoxColorH.Leave += new System.EventHandler(this.setColorWithHSVTextBox);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(181, 235);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(20, 19);
-            this.label11.TabIndex = 38;
-            this.label11.Text = "H";
-            // 
-            // textBoxColorS
-            // 
-            this.textBoxColorS.Location = new System.Drawing.Point(245, 254);
-            this.textBoxColorS.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBoxColorS.Name = "textBoxColorS";
-            this.textBoxColorS.Size = new System.Drawing.Size(51, 27);
-            this.textBoxColorS.TabIndex = 39;
-            this.textBoxColorS.Leave += new System.EventHandler(this.setColorWithHSVTextBox);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(242, 235);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(18, 19);
-            this.label10.TabIndex = 40;
-            this.label10.Text = "S";
-            // 
-            // textBoxColorV
-            // 
-            this.textBoxColorV.Location = new System.Drawing.Point(304, 254);
-            this.textBoxColorV.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBoxColorV.Name = "textBoxColorV";
-            this.textBoxColorV.Size = new System.Drawing.Size(51, 27);
-            this.textBoxColorV.TabIndex = 41;
-            this.textBoxColorV.Leave += new System.EventHandler(this.setColorWithHSVTextBox);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(301, 235);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(19, 19);
-            this.label9.TabIndex = 42;
-            this.label9.Text = "V";
-            // 
             // BtnColorShowStart
             // 
-            this.BtnColorShowStart.Location = new System.Drawing.Point(99, 207);
+            this.BtnColorShowStart.Location = new System.Drawing.Point(20, 152);
             this.BtnColorShowStart.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BtnColorShowStart.Name = "BtnColorShowStart";
             this.BtnColorShowStart.Size = new System.Drawing.Size(74, 74);
@@ -636,18 +484,15 @@
             this.BtnColorShowStart.UseVisualStyleBackColor = true;
             this.BtnColorShowStart.Click += new System.EventHandler(this.BtnColorShowStart_Click);
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(17, 86);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(47, 19);
-            this.label12.TabIndex = 47;
-            this.label12.Text = "Color";
-            // 
             // keypointStartingColor
             // 
-            this.keypointStartingColor.Controls.Add(this.textBoxKeypointSpace);
+            this.keypointStartingColor.Controls.Add(this.labelEndColorL);
+            this.keypointStartingColor.Controls.Add(this.labelColorL);
+            this.keypointStartingColor.Controls.Add(this.labelEndColorS);
+            this.keypointStartingColor.Controls.Add(this.labelEndColorH);
+            this.keypointStartingColor.Controls.Add(this.labelColorS);
+            this.keypointStartingColor.Controls.Add(this.labelColorH);
+            this.keypointStartingColor.Controls.Add(this.textBoxKeypointDuty);
             this.keypointStartingColor.Controls.Add(this.label26);
             this.keypointStartingColor.Controls.Add(this.label27);
             this.keypointStartingColor.Controls.Add(this.BtnSetColorNowtime);
@@ -663,66 +508,50 @@
             this.keypointStartingColor.Controls.Add(this.label20);
             this.keypointStartingColor.Controls.Add(this.label19);
             this.keypointStartingColor.Controls.Add(this.label18);
-            this.keypointStartingColor.Controls.Add(this.label13);
             this.keypointStartingColor.Controls.Add(this.textBoxColorStart);
-            this.keypointStartingColor.Controls.Add(this.label12);
             this.keypointStartingColor.Controls.Add(this.BtnColorShowStart);
-            this.keypointStartingColor.Controls.Add(this.label9);
-            this.keypointStartingColor.Controls.Add(this.textBoxColorV);
-            this.keypointStartingColor.Controls.Add(this.label10);
-            this.keypointStartingColor.Controls.Add(this.textBoxColorS);
-            this.keypointStartingColor.Controls.Add(this.label11);
-            this.keypointStartingColor.Controls.Add(this.textBoxColorH);
-            this.keypointStartingColor.Controls.Add(this.label8);
-            this.keypointStartingColor.Controls.Add(this.textBoxColorB);
-            this.keypointStartingColor.Controls.Add(this.label7);
-            this.keypointStartingColor.Controls.Add(this.textBoxColorG);
-            this.keypointStartingColor.Controls.Add(this.label6);
-            this.keypointStartingColor.Controls.Add(this.textBoxColorR);
-            this.keypointStartingColor.Controls.Add(this.trackBarLightness);
-            this.keypointStartingColor.Controls.Add(this.pictureBoxColorBar);
-            this.keypointStartingColor.Controls.Add(this.trackBarColorSelect);
-            this.keypointStartingColor.Location = new System.Drawing.Point(1048, 18);
+            this.keypointStartingColor.Location = new System.Drawing.Point(1218, 18);
             this.keypointStartingColor.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.keypointStartingColor.Name = "keypointStartingColor";
             this.keypointStartingColor.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.keypointStartingColor.Size = new System.Drawing.Size(400, 411);
+            this.keypointStartingColor.Size = new System.Drawing.Size(306, 392);
             this.keypointStartingColor.TabIndex = 47;
             this.keypointStartingColor.TabStop = false;
             this.keypointStartingColor.Text = "Keypoint Starting Color";
             // 
-            // textBoxKeypointSpace
+            // textBoxKeypointDuty
             // 
-            this.textBoxKeypointSpace.Location = new System.Drawing.Point(290, 48);
-            this.textBoxKeypointSpace.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBoxKeypointSpace.Name = "textBoxKeypointSpace";
-            this.textBoxKeypointSpace.Size = new System.Drawing.Size(62, 27);
-            this.textBoxKeypointSpace.TabIndex = 72;
-            this.textBoxKeypointSpace.Text = "0";
+            this.textBoxKeypointDuty.Location = new System.Drawing.Point(107, 110);
+            this.textBoxKeypointDuty.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.textBoxKeypointDuty.Name = "textBoxKeypointDuty";
+            this.textBoxKeypointDuty.Size = new System.Drawing.Size(72, 27);
+            this.textBoxKeypointDuty.TabIndex = 72;
+            this.textBoxKeypointDuty.Text = "0";
+            this.textBoxKeypointDuty.Leave += new System.EventHandler(this.KeypointSetting_TextChanged);
             // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(351, 51);
+            this.label26.Location = new System.Drawing.Point(185, 115);
             this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(31, 19);
+            this.label26.Size = new System.Drawing.Size(22, 19);
             this.label26.TabIndex = 71;
-            this.label26.Text = "sec";
+            this.label26.Text = "%";
             // 
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(286, 24);
+            this.label27.Location = new System.Drawing.Point(19, 113);
             this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(50, 19);
+            this.label27.Size = new System.Drawing.Size(42, 19);
             this.label27.TabIndex = 70;
-            this.label27.Text = "Space";
+            this.label27.Text = "Duty";
             // 
             // BtnSetColorNowtime
             // 
-            this.BtnSetColorNowtime.Location = new System.Drawing.Point(136, 48);
+            this.BtnSetColorNowtime.Location = new System.Drawing.Point(222, 39);
             this.BtnSetColorNowtime.Name = "BtnSetColorNowtime";
             this.BtnSetColorNowtime.Size = new System.Drawing.Size(27, 27);
             this.BtnSetColorNowtime.TabIndex = 67;
@@ -734,10 +563,11 @@
             // BtnKeypointSave
             // 
             this.BtnKeypointSave.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.BtnKeypointSave.Location = new System.Drawing.Point(259, 372);
+            this.BtnKeypointSave.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.BtnKeypointSave.Location = new System.Drawing.Point(23, 323);
             this.BtnKeypointSave.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BtnKeypointSave.Name = "BtnKeypointSave";
-            this.BtnKeypointSave.Size = new System.Drawing.Size(129, 28);
+            this.BtnKeypointSave.Size = new System.Drawing.Size(214, 45);
             this.BtnKeypointSave.TabIndex = 69;
             this.BtnKeypointSave.Text = "Keypoint Save";
             this.BtnKeypointSave.UseVisualStyleBackColor = false;
@@ -745,7 +575,7 @@
             // 
             // textBoxBrightTransition
             // 
-            this.textBoxBrightTransition.Location = new System.Drawing.Point(266, 337);
+            this.textBoxBrightTransition.Location = new System.Drawing.Point(109, 277);
             this.textBoxBrightTransition.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBoxBrightTransition.Name = "textBoxBrightTransition";
             this.textBoxBrightTransition.Size = new System.Drawing.Size(70, 27);
@@ -755,7 +585,7 @@
             // 
             // textBoxColorTransition
             // 
-            this.textBoxColorTransition.Location = new System.Drawing.Point(266, 302);
+            this.textBoxColorTransition.Location = new System.Drawing.Point(109, 242);
             this.textBoxColorTransition.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBoxColorTransition.Name = "textBoxColorTransition";
             this.textBoxColorTransition.Size = new System.Drawing.Size(70, 27);
@@ -765,17 +595,18 @@
             // 
             // textBoxKeypointDuration
             // 
-            this.textBoxKeypointDuration.Location = new System.Drawing.Point(193, 47);
+            this.textBoxKeypointDuration.Location = new System.Drawing.Point(107, 74);
             this.textBoxKeypointDuration.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBoxKeypointDuration.Name = "textBoxKeypointDuration";
-            this.textBoxKeypointDuration.Size = new System.Drawing.Size(62, 27);
+            this.textBoxKeypointDuration.Size = new System.Drawing.Size(72, 27);
             this.textBoxKeypointDuration.TabIndex = 65;
             this.textBoxKeypointDuration.Text = "0";
+            this.textBoxKeypointDuration.Leave += new System.EventHandler(this.KeypointSetting_TextChanged);
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(332, 340);
+            this.label24.Location = new System.Drawing.Point(175, 280);
             this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(64, 19);
@@ -785,7 +616,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(176, 340);
+            this.label25.Location = new System.Drawing.Point(19, 280);
             this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(94, 19);
@@ -795,7 +626,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(254, 50);
+            this.label22.Location = new System.Drawing.Point(185, 77);
             this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(31, 19);
@@ -805,7 +636,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(332, 305);
+            this.label21.Location = new System.Drawing.Point(175, 245);
             this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(64, 19);
@@ -814,7 +645,7 @@
             // 
             // BtnColorShowEnd
             // 
-            this.BtnColorShowEnd.Location = new System.Drawing.Point(99, 296);
+            this.BtnColorShowEnd.Location = new System.Drawing.Point(147, 152);
             this.BtnColorShowEnd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BtnColorShowEnd.Name = "BtnColorShowEnd";
             this.BtnColorShowEnd.Size = new System.Drawing.Size(74, 74);
@@ -824,7 +655,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(176, 305);
+            this.label20.Location = new System.Drawing.Point(19, 245);
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(79, 19);
@@ -834,7 +665,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(189, 23);
+            this.label19.Location = new System.Drawing.Point(19, 80);
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(70, 19);
@@ -844,29 +675,21 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(17, 23);
+            this.label18.Location = new System.Drawing.Point(19, 43);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(80, 19);
             this.label18.TabIndex = 56;
             this.label18.Text = "Start Time";
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(13, 159);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(52, 19);
-            this.label13.TabIndex = 48;
-            this.label13.Text = "Bright";
-            // 
             // textBoxColorStart
             // 
-            this.textBoxColorStart.Location = new System.Drawing.Point(21, 47);
+            this.textBoxColorStart.Location = new System.Drawing.Point(107, 38);
             this.textBoxColorStart.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBoxColorStart.Name = "textBoxColorStart";
             this.textBoxColorStart.Size = new System.Drawing.Size(112, 27);
             this.textBoxColorStart.TabIndex = 55;
+            this.textBoxColorStart.Leave += new System.EventHandler(this.KeypointSetting_TextChanged);
             // 
             // label14
             // 
@@ -913,38 +736,9 @@
             this.textBoxEffectName.Location = new System.Drawing.Point(106, 25);
             this.textBoxEffectName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBoxEffectName.Name = "textBoxEffectName";
+            this.textBoxEffectName.ReadOnly = true;
             this.textBoxEffectName.Size = new System.Drawing.Size(112, 27);
             this.textBoxEffectName.TabIndex = 51;
-            this.textBoxEffectName.Leave += new System.EventHandler(this.MainInputsTextBox_TextChanged);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(24, 130);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(78, 19);
-            this.label17.TabIndex = 54;
-            this.label17.Text = "Transition";
-            // 
-            // textBoxEffectTransition
-            // 
-            this.textBoxEffectTransition.Location = new System.Drawing.Point(106, 125);
-            this.textBoxEffectTransition.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBoxEffectTransition.Name = "textBoxEffectTransition";
-            this.textBoxEffectTransition.Size = new System.Drawing.Size(112, 27);
-            this.textBoxEffectTransition.TabIndex = 53;
-            this.textBoxEffectTransition.Leave += new System.EventHandler(this.MainInputsTextBox_TextChanged);
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(221, 130);
-            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(31, 19);
-            this.label23.TabIndex = 64;
-            this.label23.Text = "sec";
             // 
             // BtnSetStartNowtime
             // 
@@ -971,51 +765,69 @@
             // BtnHistorySave
             // 
             this.BtnHistorySave.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.BtnHistorySave.Location = new System.Drawing.Point(18, 74);
+            this.BtnHistorySave.Location = new System.Drawing.Point(147, 37);
             this.BtnHistorySave.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BtnHistorySave.Name = "BtnHistorySave";
-            this.BtnHistorySave.Size = new System.Drawing.Size(90, 35);
+            this.BtnHistorySave.Size = new System.Drawing.Size(121, 44);
             this.BtnHistorySave.TabIndex = 68;
-            this.BtnHistorySave.Text = "Save";
+            this.BtnHistorySave.Text = "Save History";
             this.BtnHistorySave.UseVisualStyleBackColor = true;
             this.BtnHistorySave.Click += new System.EventHandler(this.BtnHistorySave_Click);
             // 
             // BtnHistoryLoad
             // 
             this.BtnHistoryLoad.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.BtnHistoryLoad.Location = new System.Drawing.Point(18, 33);
+            this.BtnHistoryLoad.Location = new System.Drawing.Point(18, 37);
             this.BtnHistoryLoad.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BtnHistoryLoad.Name = "BtnHistoryLoad";
-            this.BtnHistoryLoad.Size = new System.Drawing.Size(90, 35);
+            this.BtnHistoryLoad.Size = new System.Drawing.Size(121, 44);
             this.BtnHistoryLoad.TabIndex = 67;
-            this.BtnHistoryLoad.Text = "Load";
+            this.BtnHistoryLoad.Text = "Load History";
             this.BtnHistoryLoad.UseVisualStyleBackColor = true;
             this.BtnHistoryLoad.Click += new System.EventHandler(this.BtnHistoryLoad_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label23);
+            this.groupBox1.Controls.Add(this.textBoxEffectDuration);
             this.groupBox1.Controls.Add(this.BtnSetEndNowtime);
             this.groupBox1.Controls.Add(this.BtnSetStartNowtime);
-            this.groupBox1.Controls.Add(this.label23);
-            this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Controls.Add(this.textBoxEffectTransition);
             this.groupBox1.Controls.Add(this.effect);
             this.groupBox1.Controls.Add(this.textBoxEffectName);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.textBoxEffectEnd);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.textBoxEffectStart);
-            this.groupBox1.Location = new System.Drawing.Point(704, 18);
+            this.groupBox1.Location = new System.Drawing.Point(575, 247);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(271, 162);
+            this.groupBox1.Size = new System.Drawing.Size(279, 168);
             this.groupBox1.TabIndex = 69;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Effect Setting";
             // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(24, 128);
+            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(70, 19);
+            this.label23.TabIndex = 68;
+            this.label23.Text = "Duration";
+            // 
+            // textBoxEffectDuration
+            // 
+            this.textBoxEffectDuration.Location = new System.Drawing.Point(106, 124);
+            this.textBoxEffectDuration.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.textBoxEffectDuration.Name = "textBoxEffectDuration";
+            this.textBoxEffectDuration.ReadOnly = true;
+            this.textBoxEffectDuration.Size = new System.Drawing.Size(112, 27);
+            this.textBoxEffectDuration.TabIndex = 67;
+            // 
             // BtnExport
             // 
             this.BtnExport.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.BtnExport.Location = new System.Drawing.Point(18, 186);
+            this.BtnExport.Location = new System.Drawing.Point(18, 172);
             this.BtnExport.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BtnExport.Name = "BtnExport";
             this.BtnExport.Size = new System.Drawing.Size(90, 35);
@@ -1027,21 +839,23 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.BtnSetGlobalStarting);
+            this.groupBox2.Controls.Add(this.label32);
             this.groupBox2.Controls.Add(this.label28);
+            this.groupBox2.Controls.Add(this.textBoxNumberOfBalls);
             this.groupBox2.Controls.Add(this.textBoxGlobalStarting);
             this.groupBox2.Controls.Add(this.BtnExport);
             this.groupBox2.Controls.Add(this.BtnHistorySave);
             this.groupBox2.Controls.Add(this.BtnHistoryLoad);
             this.groupBox2.Location = new System.Drawing.Point(575, 18);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(123, 234);
+            this.groupBox2.Size = new System.Drawing.Size(279, 223);
             this.groupBox2.TabIndex = 71;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Configuration";
+            this.groupBox2.Text = "Global Configuration";
             // 
             // BtnSetGlobalStarting
             // 
-            this.BtnSetGlobalStarting.Location = new System.Drawing.Point(81, 141);
+            this.BtnSetGlobalStarting.Location = new System.Drawing.Point(230, 97);
             this.BtnSetGlobalStarting.Name = "BtnSetGlobalStarting";
             this.BtnSetGlobalStarting.Size = new System.Drawing.Size(27, 27);
             this.BtnSetGlobalStarting.TabIndex = 67;
@@ -1050,124 +864,297 @@
             this.BtnSetGlobalStarting.UseVisualStyleBackColor = true;
             this.BtnSetGlobalStarting.Click += new System.EventHandler(this.BtnSetGlobalStarting_Click);
             // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(14, 133);
+            this.label32.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(121, 19);
+            this.label32.TabIndex = 68;
+            this.label32.Text = "Number of Balls";
+            // 
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(14, 119);
+            this.label28.Location = new System.Drawing.Point(14, 100);
             this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(103, 19);
             this.label28.TabIndex = 68;
             this.label28.Text = "Starting Time";
             // 
+            // textBoxNumberOfBalls
+            // 
+            this.textBoxNumberOfBalls.Location = new System.Drawing.Point(143, 130);
+            this.textBoxNumberOfBalls.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.textBoxNumberOfBalls.Name = "textBoxNumberOfBalls";
+            this.textBoxNumberOfBalls.Size = new System.Drawing.Size(80, 27);
+            this.textBoxNumberOfBalls.TabIndex = 67;
+            // 
             // textBoxGlobalStarting
             // 
-            this.textBoxGlobalStarting.Location = new System.Drawing.Point(18, 141);
+            this.textBoxGlobalStarting.Location = new System.Drawing.Point(125, 97);
             this.textBoxGlobalStarting.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBoxGlobalStarting.Name = "textBoxGlobalStarting";
-            this.textBoxGlobalStarting.Size = new System.Drawing.Size(56, 27);
+            this.textBoxGlobalStarting.Size = new System.Drawing.Size(98, 27);
             this.textBoxGlobalStarting.TabIndex = 67;
             // 
-            // textBoxAddKeypointFixDuration
+            // textBoxEffectAttr1
             // 
-            this.textBoxAddKeypointFixDuration.Location = new System.Drawing.Point(831, 199);
-            this.textBoxAddKeypointFixDuration.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBoxAddKeypointFixDuration.Name = "textBoxAddKeypointFixDuration";
-            this.textBoxAddKeypointFixDuration.Size = new System.Drawing.Size(91, 27);
-            this.textBoxAddKeypointFixDuration.TabIndex = 67;
+            this.textBoxEffectAttr1.Location = new System.Drawing.Point(113, 100);
+            this.textBoxEffectAttr1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.textBoxEffectAttr1.Name = "textBoxEffectAttr1";
+            this.textBoxEffectAttr1.Size = new System.Drawing.Size(91, 27);
+            this.textBoxEffectAttr1.TabIndex = 67;
+            this.textBoxEffectAttr1.Leave += new System.EventHandler(this.EffectAutoGen_TextChanged);
             // 
-            // checkBoxAddKeypointFixDuration
+            // unitEffectAttr1
             // 
-            this.checkBoxAddKeypointFixDuration.AutoSize = true;
-            this.checkBoxAddKeypointFixDuration.Location = new System.Drawing.Point(716, 203);
-            this.checkBoxAddKeypointFixDuration.Name = "checkBoxAddKeypointFixDuration";
-            this.checkBoxAddKeypointFixDuration.Size = new System.Drawing.Size(115, 23);
-            this.checkBoxAddKeypointFixDuration.TabIndex = 72;
-            this.checkBoxAddKeypointFixDuration.Text = "Fix Duration";
-            this.checkBoxAddKeypointFixDuration.UseVisualStyleBackColor = true;
-            this.checkBoxAddKeypointFixDuration.CheckedChanged += new System.EventHandler(this.CheckBoxAddKeypointFixDuration_CheckedChanged);
+            this.unitEffectAttr1.AutoSize = true;
+            this.unitEffectAttr1.Location = new System.Drawing.Point(207, 105);
+            this.unitEffectAttr1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.unitEffectAttr1.Name = "unitEffectAttr1";
+            this.unitEffectAttr1.Size = new System.Drawing.Size(31, 19);
+            this.unitEffectAttr1.TabIndex = 73;
+            this.unitEffectAttr1.Text = "sec";
             // 
-            // label29
+            // unitEffectAttr2
             // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(925, 204);
-            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(31, 19);
-            this.label29.TabIndex = 73;
-            this.label29.Text = "sec";
+            this.unitEffectAttr2.AutoSize = true;
+            this.unitEffectAttr2.Location = new System.Drawing.Point(207, 138);
+            this.unitEffectAttr2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.unitEffectAttr2.Name = "unitEffectAttr2";
+            this.unitEffectAttr2.Size = new System.Drawing.Size(31, 19);
+            this.unitEffectAttr2.TabIndex = 76;
+            this.unitEffectAttr2.Text = "sec";
             // 
-            // label30
+            // textBoxEffectAttr2
             // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(925, 237);
-            this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(31, 19);
-            this.label30.TabIndex = 76;
-            this.label30.Text = "sec";
+            this.textBoxEffectAttr2.Location = new System.Drawing.Point(113, 133);
+            this.textBoxEffectAttr2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.textBoxEffectAttr2.Name = "textBoxEffectAttr2";
+            this.textBoxEffectAttr2.Size = new System.Drawing.Size(91, 27);
+            this.textBoxEffectAttr2.TabIndex = 74;
+            this.textBoxEffectAttr2.Leave += new System.EventHandler(this.EffectAutoGen_TextChanged);
             // 
-            // checkBoxAddKeypointFixSpace
+            // unitEffectAttr3
             // 
-            this.checkBoxAddKeypointFixSpace.AutoSize = true;
-            this.checkBoxAddKeypointFixSpace.Location = new System.Drawing.Point(716, 236);
-            this.checkBoxAddKeypointFixSpace.Name = "checkBoxAddKeypointFixSpace";
-            this.checkBoxAddKeypointFixSpace.Size = new System.Drawing.Size(95, 23);
-            this.checkBoxAddKeypointFixSpace.TabIndex = 75;
-            this.checkBoxAddKeypointFixSpace.Text = "Fix Space";
-            this.checkBoxAddKeypointFixSpace.UseVisualStyleBackColor = true;
-            this.checkBoxAddKeypointFixSpace.CheckedChanged += new System.EventHandler(this.CheckBoxAddKeypointFixSpace_CheckedChanged);
+            this.unitEffectAttr3.AutoSize = true;
+            this.unitEffectAttr3.Location = new System.Drawing.Point(207, 171);
+            this.unitEffectAttr3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.unitEffectAttr3.Name = "unitEffectAttr3";
+            this.unitEffectAttr3.Size = new System.Drawing.Size(31, 19);
+            this.unitEffectAttr3.TabIndex = 79;
+            this.unitEffectAttr3.Text = "sec";
             // 
-            // textBoxAddKeypointFixSpace
+            // textBoxEffectAttr3
             // 
-            this.textBoxAddKeypointFixSpace.Location = new System.Drawing.Point(831, 232);
-            this.textBoxAddKeypointFixSpace.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBoxAddKeypointFixSpace.Name = "textBoxAddKeypointFixSpace";
-            this.textBoxAddKeypointFixSpace.Size = new System.Drawing.Size(91, 27);
-            this.textBoxAddKeypointFixSpace.TabIndex = 74;
+            this.textBoxEffectAttr3.Location = new System.Drawing.Point(113, 166);
+            this.textBoxEffectAttr3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.textBoxEffectAttr3.Name = "textBoxEffectAttr3";
+            this.textBoxEffectAttr3.Size = new System.Drawing.Size(91, 27);
+            this.textBoxEffectAttr3.TabIndex = 77;
+            this.textBoxEffectAttr3.Leave += new System.EventHandler(this.EffectAutoGen_TextChanged);
             // 
-            // label31
+            // unitEffectAttr0
             // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(925, 270);
-            this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(31, 19);
-            this.label31.TabIndex = 79;
-            this.label31.Text = "sec";
+            this.unitEffectAttr0.AutoSize = true;
+            this.unitEffectAttr0.Location = new System.Drawing.Point(207, 71);
+            this.unitEffectAttr0.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.unitEffectAttr0.Name = "unitEffectAttr0";
+            this.unitEffectAttr0.Size = new System.Drawing.Size(47, 19);
+            this.unitEffectAttr0.TabIndex = 82;
+            this.unitEffectAttr0.Text = "times";
             // 
-            // checkBoxAddKeypointColorTran
+            // textBoxEffectAttr0
             // 
-            this.checkBoxAddKeypointColorTran.AutoSize = true;
-            this.checkBoxAddKeypointColorTran.Location = new System.Drawing.Point(716, 269);
-            this.checkBoxAddKeypointColorTran.Name = "checkBoxAddKeypointColorTran";
-            this.checkBoxAddKeypointColorTran.Size = new System.Drawing.Size(106, 23);
-            this.checkBoxAddKeypointColorTran.TabIndex = 78;
-            this.checkBoxAddKeypointColorTran.Text = "Auto Color";
-            this.checkBoxAddKeypointColorTran.UseVisualStyleBackColor = true;
+            this.textBoxEffectAttr0.Location = new System.Drawing.Point(113, 66);
+            this.textBoxEffectAttr0.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.textBoxEffectAttr0.Name = "textBoxEffectAttr0";
+            this.textBoxEffectAttr0.Size = new System.Drawing.Size(91, 27);
+            this.textBoxEffectAttr0.TabIndex = 80;
+            this.textBoxEffectAttr0.Leave += new System.EventHandler(this.EffectAutoGen_TextChanged);
             // 
-            // textBoxAddKeypointColorTran
+            // checkBoxAutoGen
             // 
-            this.textBoxAddKeypointColorTran.Location = new System.Drawing.Point(831, 265);
-            this.textBoxAddKeypointColorTran.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBoxAddKeypointColorTran.Name = "textBoxAddKeypointColorTran";
-            this.textBoxAddKeypointColorTran.Size = new System.Drawing.Size(91, 27);
-            this.textBoxAddKeypointColorTran.TabIndex = 77;
+            this.checkBoxAutoGen.AutoSize = true;
+            this.checkBoxAutoGen.Location = new System.Drawing.Point(24, 37);
+            this.checkBoxAutoGen.Name = "checkBoxAutoGen";
+            this.checkBoxAutoGen.Size = new System.Drawing.Size(141, 23);
+            this.checkBoxAutoGen.TabIndex = 81;
+            this.checkBoxAutoGen.Text = "AutoGeneration";
+            this.checkBoxAutoGen.UseVisualStyleBackColor = true;
+            this.checkBoxAutoGen.CheckedChanged += new System.EventHandler(this.CheckBoxAutoGen_CheckedChanged);
+            // 
+            // labelEffectAttr0
+            // 
+            this.labelEffectAttr0.AutoSize = true;
+            this.labelEffectAttr0.Location = new System.Drawing.Point(20, 71);
+            this.labelEffectAttr0.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelEffectAttr0.Name = "labelEffectAttr0";
+            this.labelEffectAttr0.Size = new System.Drawing.Size(51, 19);
+            this.labelEffectAttr0.TabIndex = 68;
+            this.labelEffectAttr0.Text = "Count";
+            // 
+            // labelEffectAttr1
+            // 
+            this.labelEffectAttr1.AutoSize = true;
+            this.labelEffectAttr1.Location = new System.Drawing.Point(20, 105);
+            this.labelEffectAttr1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelEffectAttr1.Name = "labelEffectAttr1";
+            this.labelEffectAttr1.Size = new System.Drawing.Size(70, 19);
+            this.labelEffectAttr1.TabIndex = 68;
+            this.labelEffectAttr1.Text = "Duration";
+            // 
+            // labelEffectAttr2
+            // 
+            this.labelEffectAttr2.AutoSize = true;
+            this.labelEffectAttr2.Location = new System.Drawing.Point(20, 138);
+            this.labelEffectAttr2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelEffectAttr2.Name = "labelEffectAttr2";
+            this.labelEffectAttr2.Size = new System.Drawing.Size(42, 19);
+            this.labelEffectAttr2.TabIndex = 68;
+            this.labelEffectAttr2.Text = "Duty";
+            // 
+            // labelEffectAttr3
+            // 
+            this.labelEffectAttr3.AutoSize = true;
+            this.labelEffectAttr3.Location = new System.Drawing.Point(20, 171);
+            this.labelEffectAttr3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelEffectAttr3.Name = "labelEffectAttr3";
+            this.labelEffectAttr3.Size = new System.Drawing.Size(89, 19);
+            this.labelEffectAttr3.TabIndex = 68;
+            this.labelEffectAttr3.Text = "Color Trans";
+            // 
+            // textBoxEffectAttr4
+            // 
+            this.textBoxEffectAttr4.Location = new System.Drawing.Point(113, 199);
+            this.textBoxEffectAttr4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.textBoxEffectAttr4.Name = "textBoxEffectAttr4";
+            this.textBoxEffectAttr4.Size = new System.Drawing.Size(91, 27);
+            this.textBoxEffectAttr4.TabIndex = 77;
+            this.textBoxEffectAttr4.Leave += new System.EventHandler(this.EffectAutoGen_TextChanged);
+            // 
+            // unitEffectAttr4
+            // 
+            this.unitEffectAttr4.AutoSize = true;
+            this.unitEffectAttr4.Location = new System.Drawing.Point(207, 204);
+            this.unitEffectAttr4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.unitEffectAttr4.Name = "unitEffectAttr4";
+            this.unitEffectAttr4.Size = new System.Drawing.Size(31, 19);
+            this.unitEffectAttr4.TabIndex = 79;
+            this.unitEffectAttr4.Text = "sec";
+            // 
+            // labelEffectAttr4
+            // 
+            this.labelEffectAttr4.AutoSize = true;
+            this.labelEffectAttr4.Location = new System.Drawing.Point(20, 204);
+            this.labelEffectAttr4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelEffectAttr4.Name = "labelEffectAttr4";
+            this.labelEffectAttr4.Size = new System.Drawing.Size(59, 19);
+            this.labelEffectAttr4.TabIndex = 68;
+            this.labelEffectAttr4.Text = "Meteor";
+            // 
+            // groupBoxEffectAuto
+            // 
+            this.groupBoxEffectAuto.Controls.Add(this.BtnAutoGen);
+            this.groupBoxEffectAuto.Controls.Add(this.unitEffectAttr0);
+            this.groupBoxEffectAuto.Controls.Add(this.labelEffectAttr4);
+            this.groupBoxEffectAuto.Controls.Add(this.labelEffectAttr3);
+            this.groupBoxEffectAuto.Controls.Add(this.labelEffectAttr2);
+            this.groupBoxEffectAuto.Controls.Add(this.labelEffectAttr1);
+            this.groupBoxEffectAuto.Controls.Add(this.labelEffectAttr0);
+            this.groupBoxEffectAuto.Controls.Add(this.checkBoxAutoGen);
+            this.groupBoxEffectAuto.Controls.Add(this.textBoxEffectAttr0);
+            this.groupBoxEffectAuto.Controls.Add(this.unitEffectAttr4);
+            this.groupBoxEffectAuto.Controls.Add(this.unitEffectAttr3);
+            this.groupBoxEffectAuto.Controls.Add(this.textBoxEffectAttr4);
+            this.groupBoxEffectAuto.Controls.Add(this.textBoxEffectAttr3);
+            this.groupBoxEffectAuto.Controls.Add(this.unitEffectAttr2);
+            this.groupBoxEffectAuto.Controls.Add(this.textBoxEffectAttr2);
+            this.groupBoxEffectAuto.Controls.Add(this.unitEffectAttr1);
+            this.groupBoxEffectAuto.Controls.Add(this.textBoxEffectAttr1);
+            this.groupBoxEffectAuto.Location = new System.Drawing.Point(907, 18);
+            this.groupBoxEffectAuto.Name = "groupBoxEffectAuto";
+            this.groupBoxEffectAuto.Size = new System.Drawing.Size(265, 392);
+            this.groupBoxEffectAuto.TabIndex = 83;
+            this.groupBoxEffectAuto.TabStop = false;
+            this.groupBoxEffectAuto.Text = "Effects Auto Generation";
+            // 
+            // BtnAutoGen
+            // 
+            this.BtnAutoGen.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BtnAutoGen.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.BtnAutoGen.Location = new System.Drawing.Point(24, 323);
+            this.BtnAutoGen.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.BtnAutoGen.Name = "BtnAutoGen";
+            this.BtnAutoGen.Size = new System.Drawing.Size(214, 45);
+            this.BtnAutoGen.TabIndex = 83;
+            this.BtnAutoGen.Text = "Generate Keypoints";
+            this.BtnAutoGen.UseVisualStyleBackColor = false;
+            this.BtnAutoGen.Click += new System.EventHandler(this.BtnAutoGen_Click);
+            // 
+            // labelColorH
+            // 
+            this.labelColorH.AutoSize = true;
+            this.labelColorH.Location = new System.Drawing.Point(96, 152);
+            this.labelColorH.Name = "labelColorH";
+            this.labelColorH.Size = new System.Drawing.Size(20, 19);
+            this.labelColorH.TabIndex = 73;
+            this.labelColorH.Text = "H";
+            // 
+            // labelColorS
+            // 
+            this.labelColorS.AutoSize = true;
+            this.labelColorS.Location = new System.Drawing.Point(96, 180);
+            this.labelColorS.Name = "labelColorS";
+            this.labelColorS.Size = new System.Drawing.Size(18, 19);
+            this.labelColorS.TabIndex = 73;
+            this.labelColorS.Text = "S";
+            // 
+            // labelColorL
+            // 
+            this.labelColorL.AutoSize = true;
+            this.labelColorL.Location = new System.Drawing.Point(97, 207);
+            this.labelColorL.Name = "labelColorL";
+            this.labelColorL.Size = new System.Drawing.Size(17, 19);
+            this.labelColorL.TabIndex = 73;
+            this.labelColorL.Text = "L";
+            // 
+            // labelEndColorH
+            // 
+            this.labelEndColorH.AutoSize = true;
+            this.labelEndColorH.Location = new System.Drawing.Point(225, 152);
+            this.labelEndColorH.Name = "labelEndColorH";
+            this.labelEndColorH.Size = new System.Drawing.Size(20, 19);
+            this.labelEndColorH.TabIndex = 73;
+            this.labelEndColorH.Text = "H";
+            // 
+            // labelEndColorS
+            // 
+            this.labelEndColorS.AutoSize = true;
+            this.labelEndColorS.Location = new System.Drawing.Point(225, 180);
+            this.labelEndColorS.Name = "labelEndColorS";
+            this.labelEndColorS.Size = new System.Drawing.Size(18, 19);
+            this.labelEndColorS.TabIndex = 73;
+            this.labelEndColorS.Text = "S";
+            // 
+            // labelEndColorL
+            // 
+            this.labelEndColorL.AutoSize = true;
+            this.labelEndColorL.Location = new System.Drawing.Point(226, 207);
+            this.labelEndColorL.Name = "labelEndColorL";
+            this.labelEndColorL.Size = new System.Drawing.Size(17, 19);
+            this.labelEndColorL.TabIndex = 73;
+            this.labelEndColorL.Text = "L";
             // 
             // LightBallHelper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1546, 721);
-            this.Controls.Add(this.label31);
-            this.Controls.Add(this.checkBoxAddKeypointColorTran);
-            this.Controls.Add(this.textBoxAddKeypointColorTran);
-            this.Controls.Add(this.label30);
-            this.Controls.Add(this.checkBoxAddKeypointFixSpace);
-            this.Controls.Add(this.textBoxAddKeypointFixSpace);
-            this.Controls.Add(this.label29);
-            this.Controls.Add(this.checkBoxAddKeypointFixDuration);
-            this.Controls.Add(this.textBoxAddKeypointFixDuration);
+            this.ClientSize = new System.Drawing.Size(1540, 721);
+            this.Controls.Add(this.groupBoxEffectAuto);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label16);
@@ -1212,15 +1199,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.UpdownOffset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIndicator)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarColorSelect)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxColorBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarLightness)).EndInit();
             this.keypointStartingColor.ResumeLayout(false);
             this.keypointStartingColor.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBoxEffectAuto.ResumeLayout(false);
+            this.groupBoxEffectAuto.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1261,32 +1247,13 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxEffectEnd;
-        private System.Windows.Forms.TrackBar trackBarColorSelect;
-        private System.Windows.Forms.PictureBox pictureBoxColorBar;
-        private System.Windows.Forms.TrackBar trackBarLightness;
-        private System.Windows.Forms.TextBox textBoxColorR;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBoxColorG;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBoxColorB;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBoxColorH;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBoxColorS;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBoxColorV;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button BtnColorShowStart;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox keypointStartingColor;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label effect;
         private System.Windows.Forms.TextBox textBoxEffectName;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBoxEffectTransition;
         private System.Windows.Forms.Button BtnColorShowEnd;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
@@ -1294,7 +1261,6 @@
         private System.Windows.Forms.TextBox textBoxColorStart;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.TextBox textBoxBrightTransition;
@@ -1304,7 +1270,6 @@
         private System.Windows.Forms.Button BtnSetStartNowtime;
         private System.Windows.Forms.Button BtnSetColorNowtime;
         private System.Windows.Forms.Button BtnSetEndNowtime;
-        private System.Windows.Forms.TextBox textBoxKeypointSpace;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Button BtnHistorySave;
@@ -1315,15 +1280,35 @@
         private System.Windows.Forms.Button BtnSetGlobalStarting;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.TextBox textBoxGlobalStarting;
-        private System.Windows.Forms.TextBox textBoxAddKeypointFixDuration;
-        private System.Windows.Forms.CheckBox checkBoxAddKeypointFixDuration;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.CheckBox checkBoxAddKeypointFixSpace;
-        private System.Windows.Forms.TextBox textBoxAddKeypointFixSpace;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.CheckBox checkBoxAddKeypointColorTran;
-        private System.Windows.Forms.TextBox textBoxAddKeypointColorTran;
+        private System.Windows.Forms.TextBox textBoxEffectAttr1;
+        private System.Windows.Forms.Label unitEffectAttr1;
+        private System.Windows.Forms.Label unitEffectAttr2;
+        private System.Windows.Forms.TextBox textBoxEffectAttr2;
+        private System.Windows.Forms.Label unitEffectAttr3;
+        private System.Windows.Forms.TextBox textBoxEffectAttr3;
+        private System.Windows.Forms.Label unitEffectAttr0;
+        private System.Windows.Forms.TextBox textBoxEffectAttr0;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox textBoxEffectDuration;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TextBox textBoxNumberOfBalls;
+        private System.Windows.Forms.CheckBox checkBoxAutoGen;
+        private System.Windows.Forms.Label labelEffectAttr0;
+        private System.Windows.Forms.Label labelEffectAttr1;
+        private System.Windows.Forms.Label labelEffectAttr2;
+        private System.Windows.Forms.Label labelEffectAttr3;
+        private System.Windows.Forms.TextBox textBoxEffectAttr4;
+        private System.Windows.Forms.Label unitEffectAttr4;
+        private System.Windows.Forms.Label labelEffectAttr4;
+        private System.Windows.Forms.GroupBox groupBoxEffectAuto;
+        private System.Windows.Forms.TextBox textBoxKeypointDuty;
+        private System.Windows.Forms.Button BtnAutoGen;
+        private System.Windows.Forms.Label labelColorL;
+        private System.Windows.Forms.Label labelColorS;
+        private System.Windows.Forms.Label labelColorH;
+        private System.Windows.Forms.Label labelEndColorL;
+        private System.Windows.Forms.Label labelEndColorS;
+        private System.Windows.Forms.Label labelEndColorH;
     }
 }
 
