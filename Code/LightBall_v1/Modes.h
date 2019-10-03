@@ -26,8 +26,7 @@ float HueToRGB(float v1, float v2, float vH);
 void set_hsl(int H, float S, float L);
 void set_hsl_progressive(uint24 index, uint16 duration, 
                          uint8 h, uint8 s, uint8 l, 
-                         uint8 colorTrans, uint8 brightTrans, 
-                         uint8 count, uint8 duty);
+                         uint8 colorTrans, uint8 brightTrans);
 void set_hsl_spark_async(uint24 index, uint16 duration, 
                          uint8 h, uint8 s, uint8 l, 
                          uint8 colorTrans, uint8 brightTrans, 

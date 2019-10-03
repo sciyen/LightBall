@@ -123,5 +123,9 @@ namespace LightBallHelper {
                 this.Luminosity + t*brightTran);
             return new_hsl;
         }
+        public static Color offsetColor(Color color, double colorTran, double brightTran) {
+            HSLColor hsl = color;
+            return hsl.offsetColor(1, colorTran, brightTran);
+        }
     }
 }

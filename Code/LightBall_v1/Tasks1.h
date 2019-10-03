@@ -1,0 +1,16 @@
+#ifndef TASK_H
+#define TASK_H
+
+#include "Constants.h"
+#include "Essentials.h"
+
+//#define BUFFER_SIZE 80
+#define CMD_PARAMETER_LENGTH 14
+
+const byte cmd_buffer[][CMD_PARAMETER_LENGTH] = {
+  //     Mode,          Starting Time,   Duration,    h,    s,    l,color,  bri,count, duty
+  {LM_SET_HSL_METEOR_ASYNC, 0x00, 0x00, 0x00, 0x00, 0x27, 0x10, 0x00, 0xff, 0x7f, 0x96, 0x7f, 0x0a, 0xc0}
+//{LM_SET_HSL_SPARK_ASYNC, 0x00, 0x00, 0x00, 0x00, 0x27, 0x10, 0x00, 0xff, 0x7f, 0x96, 0x7f, 0x04, 0x50}
+};
+
+#endif

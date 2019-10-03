@@ -1,9 +1,14 @@
 #include "Modes.h"
 #include "Essentials.h"
-//#define DEBUGGER
+#define DEBUGGER
 /* check the value always limited in MIN ~ MAX */
 uint8 inline get_limited_value(uint8 v){
     return (char)(v<LIMITED_MIN) ? LIMITED_MIN : ( (v>LIMITED_MAX) ? LIMITED_MAX : v );
+}
+float getFloatFromInt(uint8 ui){
+  int i = ui;
+  i -= 127;
+  return i/100.0;
 }
 void set_rgb(uint8 r, uint8 g, uint8 b){
     led_buffer[LED_R_INDEX] = get_limited_value(r);
@@ -48,8 +53,8 @@ void set_hsl(int H, float S, float L) {
 };
 void set_hsl_progressive(uint24 index, uint16 duration, 
                          uint8 h, uint8 s, uint8 l, 
-                         uint8 colorTrans, uint8 brightTrans, 
-                         uint8 count, uint8 duty){
+                         uint8 colorTrans, uint8 brightTrans){
+                          Serial.print("start");
     set_hsl_spark_async(index, duration, h, s, l,
                          colorTrans, brightTrans, 1, 255);
 }
@@ -58,12 +63,13 @@ void set_hsl_spark_async(uint24 index, uint16 duration,
                          uint8 h, uint8 s, uint8 l, 
                          uint8 colorTrans, uint8 brightTrans, 
                          uint8 count, uint8 duty){
-    int n_h = h+colorTrans*index/1000;
-    int n_l = l+brightTrans*index/1000;
+    int n_h = (int)((float)h/0.7f+colorTrans*index/1000)%360;
+    float n_l = ((float)(l/255.0)+getFloatFromInt(brightTrans)*index);
+    n_l = (n_l > 1) ? 1 : n_l;
     uint16 size = duration/count;       //Frame size
-    if (255*(index%size)/size < duty){  //In range of duty
-      n_h %= 360; n_l %= 255;
-      set_hsl(n_h, s/255.0, n_l/255.0);  // unit: H/1000s, L/1000s
+    if (100*(index%size)/size < duty){  //In range of duty
+      n_h %= 360;
+      set_hsl(n_h, s/255.0, n_l);  // unit: H/1000s, L/1000s
     }
     else
       set_rgb(0, 0, 0);
@@ -74,11 +80,11 @@ void set_hsl_spark_sync(uint24 index, uint16 duration,
                          uint8 colorTrans, uint8 brightTrans, 
                          uint8 count, uint8 duty){
     uint16 size = duration/count;       //Frame size
-    if (255*(index%size)/size < duty){  //In range of duty
-      int n_h = h+colorTrans*(index%size)/1000;
-      int n_l = l+brightTrans*(index%size)/1000;
-      n_h %= 360; n_l %= 255;
-      set_hsl(n_h, s/255.0, n_l/255.0);  // unit: H/1000s, L/1000s
+    int n_h = (int)((float)(h/0.7f)+colorTrans*(index/size)*size/1000)%360;
+    if (100*(index%size)/size < duty){  //In range of duty
+      //int n_h = (int)((float)(h/0.7f)+colorTrans*(index%size)/1000)%360;
+      float n_l = (float)(l/255.0)+getFloatFromInt(brightTrans)*(index%size);
+      set_hsl(n_h, s/255.0, n_l);  // unit: H/1000s, L/1000s
     }
     else
       set_rgb(0, 0, 0);
@@ -89,12 +95,11 @@ void set_hsl_meteor_async(uint24 index, uint16 duration,
                          uint8 h, uint8 s, uint8 l, 
                          uint8 colorTrans, uint8 meteorTrans, 
                          uint8 count, uint8 duty){
-    int n_h = h+colorTrans*index/1000;
     uint16 size = duration/count;       //Frame size
+    int n_h = (int)((float)(h/0.7f)+colorTrans*(index/size)*size/1000);
     if (255*(index%size)/size < duty){  //In range of duty
-      n_h += meteorTrans*(index%size)/1000;
-      n_h %= 360;
-      set_hsl(n_h, s/255.0, (float)(index%size)/size);  // unit: H/1000s, L/1000s
+      float dt = (index%size)*255.0/duty/size;
+      set_hsl((n_h + meteorTrans*(index%size)/1000)%360, s/255.0, 0.5*pow(2.7, -5*dt));  // unit: H/1000s, L/1000s
     }
     else
       set_rgb(0, 0, 0);
@@ -105,12 +110,15 @@ void set_hsl_meteor_sync(uint24 index, uint16 duration,
                          uint8 h, uint8 s, uint8 l, 
                          uint8 colorTrans, uint8 meteorTrans, 
                          uint8 count, uint8 duty){
+    set_hsl_meteor_async(index, duration, h, s, l, 0, meteorTrans, count, duty);
+                          /*
     uint16 size = duration/count;       //Frame size
     if (255*(index%size)/size < duty){  //In range of duty
       int n_h = h+meteorTrans*(index%size)/1000;
       n_h %= 360;
-      set_hsl(n_h, s/255.0, (float)(index%size)/size);  // unit: H/1000s, L/1000s
+      set_hsl(n_h, s/255.0, 1-(float)(index%size)/size);  // unit: H/1000s, L/1000s
     }
     else
       set_rgb(0, 0, 0);
+      */
 }

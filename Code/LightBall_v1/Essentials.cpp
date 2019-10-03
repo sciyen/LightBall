@@ -91,20 +91,9 @@ void buffer_update(){
                 get_cmd_para_1(buffer_excute_counter, 1), //S
                 get_cmd_para_1(buffer_excute_counter, 2), //L
                 get_cmd_para_1(buffer_excute_counter, 3), //colorTrans
-                get_cmd_para_1(buffer_excute_counter, 4), //brightTrans
-                get_cmd_para_1(buffer_excute_counter, 5), //count
-                get_cmd_para_1(buffer_excute_counter, 6)); //duty
+                get_cmd_para_1(buffer_excute_counter, 4));//brightTrans                 
                 break;
-            case LM_SET_HSV_SPARK_ASYNC: set_hsl_spark_async(
-                (get_buffer_start_time()-get_cmd_start_time(buffer_excute_counter)), 
-                get_cmd_duration(buffer_excute_counter),
-                get_cmd_para_1(buffer_excute_counter, 0), //H
-                get_cmd_para_1(buffer_excute_counter, 1), //S
-                get_cmd_para_1(buffer_excute_counter, 2), //L
-                get_cmd_para_1(buffer_excute_counter, 3), //colorTrans
-                get_cmd_para_1(buffer_excute_counter, 4));//brightTrans
-                break;
-            case LM_SET_HSV_SPARK_SYNC: set_hsl_spark_sync(
+            case LM_SET_HSL_SPARK_ASYNC: set_hsl_spark_async(
                 (get_buffer_start_time()-get_cmd_start_time(buffer_excute_counter)), 
                 get_cmd_duration(buffer_excute_counter),
                 get_cmd_para_1(buffer_excute_counter, 0), //H
@@ -113,7 +102,18 @@ void buffer_update(){
                 get_cmd_para_1(buffer_excute_counter, 3), //colorTrans
                 get_cmd_para_1(buffer_excute_counter, 4), //brightTrans
                 get_cmd_para_1(buffer_excute_counter, 5), //count
-                get_cmd_para_1(buffer_excute_counter, 6)); //duty
+                get_cmd_para_1(buffer_excute_counter, 6));//duty
+                break;
+            case LM_SET_HSL_SPARK_SYNC: set_hsl_spark_sync(
+                (get_buffer_start_time()-get_cmd_start_time(buffer_excute_counter)), 
+                get_cmd_duration(buffer_excute_counter),
+                get_cmd_para_1(buffer_excute_counter, 0), //H
+                get_cmd_para_1(buffer_excute_counter, 1), //S
+                get_cmd_para_1(buffer_excute_counter, 2), //L
+                get_cmd_para_1(buffer_excute_counter, 3), //colorTrans
+                get_cmd_para_1(buffer_excute_counter, 4), //brightTrans
+                get_cmd_para_1(buffer_excute_counter, 5), //count
+                get_cmd_para_1(buffer_excute_counter, 6));//duty
                 break;
             case LM_SET_HSL_METEOR_ASYNC: set_hsl_meteor_async(
                 (get_buffer_start_time()-get_cmd_start_time(buffer_excute_counter)), 
@@ -122,9 +122,9 @@ void buffer_update(){
                 get_cmd_para_1(buffer_excute_counter, 1), //S
                 get_cmd_para_1(buffer_excute_counter, 2), //L
                 get_cmd_para_1(buffer_excute_counter, 3), //colorTrans
-                get_cmd_para_1(buffer_excute_counter, 4), //brightTrans
+                get_cmd_para_1(buffer_excute_counter, 4), //meteorTrans
                 get_cmd_para_1(buffer_excute_counter, 5), //count
-                get_cmd_para_1(buffer_excute_counter, 6)); //duty
+                get_cmd_para_1(buffer_excute_counter, 6));//duty
                 break;
             case LM_SET_HSL_METEOR_SYNC: set_hsl_meteor_sync(
                 (get_buffer_start_time()-get_cmd_start_time(buffer_excute_counter)), 
@@ -133,9 +133,9 @@ void buffer_update(){
                 get_cmd_para_1(buffer_excute_counter, 1), //S
                 get_cmd_para_1(buffer_excute_counter, 2), //L
                 get_cmd_para_1(buffer_excute_counter, 3), //colorTrans
-                get_cmd_para_1(buffer_excute_counter, 4), //brightTrans
+                get_cmd_para_1(buffer_excute_counter, 4), //meteorTrans
                 get_cmd_para_1(buffer_excute_counter, 5), //count
-                get_cmd_para_1(buffer_excute_counter, 6)); //duty
+                get_cmd_para_1(buffer_excute_counter, 6));//duty
                 break;        
         }
     }

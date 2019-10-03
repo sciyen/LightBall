@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NAudio.Wave;
@@ -30,10 +31,10 @@ namespace LightBallHelper {
 
         private List<Effects> effectListObj;
         private Color keyColor;
-        public static TimeSpan globalStartingTime;
+        public static string outputTaskName = "Task";
 
         /* Effect Attr */
-        const int maxEffectAttr = 5;
+        const int maxEffectAttr = 6;
         Label[] effectAttrLabel = new Label[maxEffectAttr];
         TextBox[] effectAttrValue = new TextBox[maxEffectAttr];
         Label[] effectAttrUnit = new Label[maxEffectAttr];
@@ -41,7 +42,7 @@ namespace LightBallHelper {
             InitializeComponent();
             labelNowTime.Text = prefixNowTime;
             labelTotalTime.Text = prefixTotalTime;
-
+            /* Waveform setup */
             waveFormRenderer = new WaveFormRenderer();
             standardSettings = new StandardWaveFormRendererSettings() { Name = "Standard" };
 
@@ -69,15 +70,19 @@ namespace LightBallHelper {
                     RenderWaveform();
             };
 
+            /* Effects Setup */
             effectListObj = new List<Effects>();
 
             effectsOptions.Items.Add(Effects.EffectsNames.EffectHSL.ToString());
             effectsOptions.Items.Add(Effects.EffectsNames.EffectColorTransition.ToString());
             effectsOptions.Items.Add(Effects.EffectsNames.EffectSparkAsync.ToString());
+            effectsOptions.Items.Add(Effects.EffectsNames.EffectSparkSync.ToString());
+            effectsOptions.Items.Add(Effects.EffectsNames.EffectMeteorAsync.ToString());
+            effectsOptions.Items.Add(Effects.EffectsNames.EffectMeteorSync.ToString());
             keyColor = Color.AliceBlue;
             setColor(keyColor);
-            globalStartingTime = TimeSpan.Zero;
-            textBoxGlobalStarting.Text = getFormatedTimeString(globalStartingTime);
+            textBoxGlobalStarting.Text = getFormatedTimeString(Effects.globalStartingTime);
+            textBoxNumberOfBalls.Text = Effects.numOfBall.ToString();
 
             // Setup Effect Attr Objects
             {
@@ -96,7 +101,14 @@ namespace LightBallHelper {
                 effectAttrLabel[4] = this.labelEffectAttr4;
                 effectAttrValue[4] = this.textBoxEffectAttr4;
                 effectAttrUnit[4] = this.unitEffectAttr4;
+                effectAttrLabel[5] = this.labelEffectAttr5;
+                effectAttrValue[5] = this.textBoxEffectAttr5;
+                effectAttrUnit[5] = this.unitEffectAttr5;
             }
+
+            /* Configuration */
+            textBoxGlobalStarting.Text = LightBallHelper.getFormatedTimeString(TimeSpan.Zero);
+            textBoxEffectAttr5.Text = "0";
         }
         private void LightBallHelper_Paint(object sender, PaintEventArgs e) {
         }
@@ -312,6 +324,12 @@ namespace LightBallHelper {
                     return new EffectColorTransition(audioFileReader.CurrentTime);
                 case 2:
                     return new EffectSparkAsync(audioFileReader.CurrentTime);
+                case 3:
+                    return new EffectSparkSync(audioFileReader.CurrentTime);
+                case 4:
+                    return new EffectMeteorAsync(audioFileReader.CurrentTime);
+                case 5:
+                    return new EffectMeteorSync(audioFileReader.CurrentTime);
                 default:
                     return new EffectColorTransition(audioFileReader.CurrentTime);
             }
@@ -323,8 +341,17 @@ namespace LightBallHelper {
                 MessageBox.Show("Please select an effect from effect list!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else {
                 Effects new_effect = getEffectsById(effectsOptions.SelectedIndex);
-                effectsList.Items.Add(new_effect.Effect_Name);
-                effectListObj.Add(new_effect);
+                effectsList.Items.Insert(effectsList.SelectedIndex+1, new_effect.Effect_Name);
+                effectListObj.Insert(effectsList.SelectedIndex+1, new_effect);
+                /*
+                if ( effectsList.SelectedIndex >= 0 ) {
+                    effectsList.Items.Insert(effectsList.SelectedIndex, new_effect.Effect_Name);
+                    effectListObj.Insert(effectsList.SelectedIndex, new_effect);
+                }
+                else {
+                    effectsList.Items.Add(new_effect.Effect_Name);
+                    effectListObj.Add(new_effect);
+                }*/
             }
         }
         private void BtnDelEffect_Click(object sender, EventArgs e) {
@@ -344,16 +371,12 @@ namespace LightBallHelper {
                 BtnDelKeypoint.Enabled = false;
                 selected.autoGen = true;
                 keypointStartingColor.Text = "Effect Starting Color";
-                if ( selected.autoGenMode == Effects.AutoGenMode.either)
-                    BtnAutoGen.Enabled = true;
             }
             else {
                 BtnAddKeypoint.Enabled = true;
                 BtnDelKeypoint.Enabled = true;
                 selected.autoGen = false;
                 keypointStartingColor.Text = "Keypoint Starting Color";
-                if ( selected.autoGenMode == Effects.AutoGenMode.either )
-                    BtnAutoGen.Enabled = false;
             }
         }
         /* Prevent recursive setting while reloading effect attributes. */
@@ -380,10 +403,12 @@ namespace LightBallHelper {
                 selected.endTime = getTimeSpanFromString(textBoxEffectEnd.Text);
                 // Update name in listbox
                 effectsList.Items[effectsList.SelectedIndex] = selected.Effect_Name;
+                textBoxEffectDuration.Text = (selected.endTime - selected.startTime).TotalSeconds.ToString();
             }
         }
         private void reloadEffect() {
             Effects selected = effectListObj[effectsList.SelectedIndex];
+            SetKeypointOnlyColor(selected.autoGenMode == Effects.AutoGenMode.enable);
             /* Effect Setting*/
             textBoxEffectName.Text = selected.effectName.ToString();                        // Name
             textBoxEffectStart.Text = getFormatedTimeString(selected.startTime);            // Start time 
@@ -411,11 +436,6 @@ namespace LightBallHelper {
                         effectAttrValue[i].Enabled = false;
                 }
             }
-
-            if ( selected.autoGenMode == Effects.AutoGenMode.either && checkBoxAutoGen.Checked )
-                BtnAutoGen.Enabled = true;
-            else
-                BtnAutoGen.Enabled = false;
         }
         private void EffectsList_SelectedIndexChanged(object sender, EventArgs e) {
             if ( effectsList.SelectedIndex >= 0 ) {
@@ -440,54 +460,6 @@ namespace LightBallHelper {
         }
         #endregion
 
-        #region Color Trans
-        /*
-        Color SetHue(Color oldColor) {
-            var temp = new HSV();
-            temp.h = oldColor.GetHue();
-            temp.s = oldColor.GetSaturation();
-            temp.v = getBrightness(oldColor);
-            return ColorFromHSL(temp);
-        }
-
-        // A common triple float struct for both HSL & HSV
-        // Actually this should be immutable and have a nice constructor!!
-        public struct HSV { public double h; public double s; public double v;
-            public HSV(double a, double b, double c) {
-                h = a; s = b; v = c;
-            }
-        }
-
-        // the Color Converter
-        static public Color ColorFromHSL(HSV hsl) {
-            hsl.h %= 360;
-            hsl.v = (hsl.v < 0 ? 0 : hsl.v);
-            if ( hsl.s == 0 ) { int L = (int)hsl.v; return Color.FromArgb(255, L, L, L); }
-
-            double min, max, h;
-            h = hsl.h / 360d;
-
-            max = hsl.v < 0.5d ? hsl.v * (1 + hsl.s) : (hsl.v + hsl.s) - (hsl.v * hsl.s);
-            min = (hsl.v * 2d) - max;
-
-            Color c = Color.FromArgb(255, (int)(255 * RGBChannelFromHue(min, max,h + 1 / 3d)%256),
-                                  (int)(255 * RGBChannelFromHue(min, max,h)%256),
-                                  (int)(255 * RGBChannelFromHue(min, max,h - 1 / 3d))%256);
-            return c;
-        }
-
-        static double RGBChannelFromHue(double m1, double m2, double h) {
-            h = (h + 1d) % 1d;
-            if ( h < 0 ) h += 1;
-            if ( h * 6 < 1 ) return m1 + (m2 - m1) * 6 * h;
-            else if ( h * 2 < 1 ) return m2;
-            else if ( h * 3 < 2 ) return m1 + (m2 - m1) * 6 * (2d / 3d - h);
-            else return m1;
-
-        }
-        float getBrightness(Color c) { return (c.R * 0.299f + c.G * 0.587f + c.B * 0.114f) / 256f; }
-        */
-        #endregion
         #region Color Selector
         private void setColor(Color color) {
             keyColor = color;
@@ -506,16 +478,9 @@ namespace LightBallHelper {
                 getDoubleFromString(textBoxColorTransition.Text),
                 getDoubleFromString(textBoxBrightTransition.Text));
             BtnColorShowEnd.BackColor = col;
-            //labelEndColorH.Text = "H= " + Math.Round(col.GetHue(), 0).ToString();
-            labelEndColorH.Text = "H= " + hsl2.Hue.ToString();
+            labelEndColorH.Text = "H= " + Math.Round(col.GetHue(), 0).ToString();
             labelEndColorS.Text = "S= " + Math.Round(col.GetSaturation(), 2).ToString();
             labelEndColorL.Text = "L= " + Math.Round(col.GetBrightness(), 2).ToString();
-            /*
-            BtnColorShowEnd.BackColor = ColorFromHSL(
-                new HSV(color.GetHue() + (getDoubleFromString(textBoxColorTransition.Text) * getDoubleFromString(textBoxKeypointDuration.Text))
-                , color.GetSaturation()
-                , getBrightness(color) + (getDoubleFromString(textBoxBrightTransition.Text) * getDoubleFromString(textBoxKeypointDuration.Text))));
-            */
         }
         #endregion
         #region Keypoint
@@ -529,6 +494,7 @@ namespace LightBallHelper {
                 setColor(target.color);
                 textBoxColorTransition.Text = target.colorTransition.ToString();
                 textBoxBrightTransition.Text = target.brightTransition.ToString();
+                audioFileReader.CurrentTime = target.startTime;
             }
         }
         private void setKeypointInputs() {
@@ -551,7 +517,9 @@ namespace LightBallHelper {
             }
         }
         private void BtnAddKeypoint_Click(object sender, EventArgs e) {
-            if ( effectsList.SelectedIndex < 0 )
+            if ( audioFileReader == null )
+                MessageBox.Show("Please load music file before setting effects!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if ( effectsList.SelectedIndex < 0 )
                 MessageBox.Show("Please select a effect first!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if ( keypointsList.SelectedIndex < 0 )
                 MessageBox.Show("Please select a keypoint first!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -580,12 +548,6 @@ namespace LightBallHelper {
                     color = new HSLColor(starting_color).offsetColor(
                         (audioFileReader.CurrentTime.Subtract(selected.keypoints[0].startTime).TotalSeconds),
                         colorTran, brightTran);
-                    /*
-                    color = ColorFromHSL(
-                        new HSV(color.GetHue() + (colorTran * (audioFileReader.CurrentTime.Subtract(selected.keypoints[0].startTime).TotalSeconds))
-                        , starting_color.GetSaturation()
-                        , getBrightness(starting_color) + (brightTran * (audioFileReader.CurrentTime.Subtract(selected.keypoints[0].startTime).TotalSeconds))));
-                    */
                 }
                 else {
                     if (keypointsList.SelectedIndex >= 0 ) {
@@ -629,12 +591,19 @@ namespace LightBallHelper {
         private void BtnKeypointSave_Click(object sender, EventArgs e) {
             setKeypointInputs();
         }
+        private void SetKeypointOnlyColor(bool mode) { // True for only color textbox enabled
+            textBoxColorStart.Enabled = !mode;
+            textBoxKeypointDuration.Enabled = !mode;
+            textBoxKeypointDuty.Enabled = !mode;
+            textBoxColorTransition.Enabled = !mode;
+            textBoxBrightTransition.Enabled = !mode;
+        }
         #endregion
 
         #region Set Configuration
         private void BtnSetGlobalStarting_Click(object sender, EventArgs e) {
             textBoxGlobalStarting.Text = audioFileReader != null ? getFormatedTimeString(audioFileReader.CurrentTime) : "0";
-            globalStartingTime = audioFileReader.CurrentTime;
+            Effects.globalStartingTime = audioFileReader.CurrentTime;
         }
         private void BtnHistorySave_Click(object sender, EventArgs e) {
             var ofd = new SaveFileDialog();
@@ -653,13 +622,14 @@ namespace LightBallHelper {
                 {
                     effectsList.Items.Add(eff.Effect_Name);
                 });
+                textBoxGlobalStarting.Text = getFormatedTimeString(Effects.globalStartingTime);
+                textBoxNumberOfBalls.Text = Effects.numOfBall.ToString();
             }
         }
         private void BtnExport_Click(object sender, EventArgs e) {
-            var ofd = new SaveFileDialog();
-            ofd.Filter = "Array|*.cpp";
-            if ( ofd.ShowDialog() == DialogResult.OK ) {
-                Effects.ExportTasks(ofd.FileName, effectListObj);
+            var fbd = new FolderBrowserDialog();
+            if ( fbd.ShowDialog() == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath)) {
+                Effects.ExportTasks(Path.Combine(fbd.SelectedPath, outputTaskName), effectListObj);
             }
         }
 
@@ -675,6 +645,18 @@ namespace LightBallHelper {
 
         private void BtnAutoGen_Click(object sender, EventArgs e) {
 
+        }
+
+        private void TextBoxGlobalStarting_Leave(object sender, EventArgs e) {
+            Effects.globalStartingTime = getTimeSpanFromString(textBoxGlobalStarting.Text);
+        }
+
+        private void TextBoxNumberOfBalls_Leave(object sender, EventArgs e) {
+            Effects.numOfBall = getIntFromString(textBoxNumberOfBalls.Text);
+        }
+
+        private void TextBoxNumberOfBalls_TextChanged(object sender, EventArgs e) {
+            Effects.numOfBall = getIntFromString(textBoxNumberOfBalls.Text);
         }
     }
 }

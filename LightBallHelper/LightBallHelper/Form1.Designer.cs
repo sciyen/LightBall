@@ -64,11 +64,16 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.BtnColorShowStart = new System.Windows.Forms.Button();
             this.keypointStartingColor = new System.Windows.Forms.GroupBox();
+            this.labelEndColorL = new System.Windows.Forms.Label();
+            this.labelColorL = new System.Windows.Forms.Label();
+            this.labelEndColorS = new System.Windows.Forms.Label();
+            this.labelEndColorH = new System.Windows.Forms.Label();
+            this.labelColorS = new System.Windows.Forms.Label();
+            this.labelColorH = new System.Windows.Forms.Label();
             this.textBoxKeypointDuty = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.BtnSetColorNowtime = new System.Windows.Forms.Button();
-            this.BtnKeypointSave = new System.Windows.Forms.Button();
             this.textBoxBrightTransition = new System.Windows.Forms.TextBox();
             this.textBoxColorTransition = new System.Windows.Forms.TextBox();
             this.textBoxKeypointDuration = new System.Windows.Forms.TextBox();
@@ -117,13 +122,9 @@
             this.unitEffectAttr4 = new System.Windows.Forms.Label();
             this.labelEffectAttr4 = new System.Windows.Forms.Label();
             this.groupBoxEffectAuto = new System.Windows.Forms.GroupBox();
-            this.BtnAutoGen = new System.Windows.Forms.Button();
-            this.labelColorH = new System.Windows.Forms.Label();
-            this.labelColorS = new System.Windows.Forms.Label();
-            this.labelColorL = new System.Windows.Forms.Label();
-            this.labelEndColorH = new System.Windows.Forms.Label();
-            this.labelEndColorS = new System.Windows.Forms.Label();
-            this.labelEndColorL = new System.Windows.Forms.Label();
+            this.labelEffectAttr5 = new System.Windows.Forms.Label();
+            this.textBoxEffectAttr5 = new System.Windows.Forms.TextBox();
+            this.unitEffectAttr5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.audioTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.updownTopHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.updownBottomHeight)).BeginInit();
@@ -177,7 +178,7 @@
             // 
             this.BtnPlay.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BtnPlay.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.BtnPlay.Location = new System.Drawing.Point(656, 424);
+            this.BtnPlay.Location = new System.Drawing.Point(656, 459);
             this.BtnPlay.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BtnPlay.Name = "BtnPlay";
             this.BtnPlay.Size = new System.Drawing.Size(74, 35);
@@ -190,7 +191,7 @@
             // 
             this.BtnStop.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BtnStop.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.BtnStop.Location = new System.Drawing.Point(921, 424);
+            this.BtnStop.Location = new System.Drawing.Point(921, 459);
             this.BtnStop.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BtnStop.Name = "BtnStop";
             this.BtnStop.Size = new System.Drawing.Size(74, 35);
@@ -381,7 +382,7 @@
             // 
             this.BtnBackwardMove.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BtnBackwardMove.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.BtnBackwardMove.Location = new System.Drawing.Point(575, 424);
+            this.BtnBackwardMove.Location = new System.Drawing.Point(575, 459);
             this.BtnBackwardMove.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BtnBackwardMove.Name = "BtnBackwardMove";
             this.BtnBackwardMove.Size = new System.Drawing.Size(74, 35);
@@ -394,7 +395,7 @@
             // 
             this.BtnForwardMove.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BtnForwardMove.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.BtnForwardMove.Location = new System.Drawing.Point(737, 424);
+            this.BtnForwardMove.Location = new System.Drawing.Point(737, 459);
             this.BtnForwardMove.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BtnForwardMove.Name = "BtnForwardMove";
             this.BtnForwardMove.Size = new System.Drawing.Size(74, 35);
@@ -405,7 +406,7 @@
             // 
             // UpdownOffset
             // 
-            this.UpdownOffset.Location = new System.Drawing.Point(819, 430);
+            this.UpdownOffset.Location = new System.Drawing.Point(819, 465);
             this.UpdownOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.UpdownOffset.Maximum = new decimal(new int[] {
             10000,
@@ -496,7 +497,6 @@
             this.keypointStartingColor.Controls.Add(this.label26);
             this.keypointStartingColor.Controls.Add(this.label27);
             this.keypointStartingColor.Controls.Add(this.BtnSetColorNowtime);
-            this.keypointStartingColor.Controls.Add(this.BtnKeypointSave);
             this.keypointStartingColor.Controls.Add(this.textBoxBrightTransition);
             this.keypointStartingColor.Controls.Add(this.textBoxColorTransition);
             this.keypointStartingColor.Controls.Add(this.textBoxKeypointDuration);
@@ -514,10 +514,64 @@
             this.keypointStartingColor.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.keypointStartingColor.Name = "keypointStartingColor";
             this.keypointStartingColor.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.keypointStartingColor.Size = new System.Drawing.Size(306, 392);
+            this.keypointStartingColor.Size = new System.Drawing.Size(306, 411);
             this.keypointStartingColor.TabIndex = 47;
             this.keypointStartingColor.TabStop = false;
             this.keypointStartingColor.Text = "Keypoint Starting Color";
+            // 
+            // labelEndColorL
+            // 
+            this.labelEndColorL.AutoSize = true;
+            this.labelEndColorL.Location = new System.Drawing.Point(226, 207);
+            this.labelEndColorL.Name = "labelEndColorL";
+            this.labelEndColorL.Size = new System.Drawing.Size(17, 19);
+            this.labelEndColorL.TabIndex = 73;
+            this.labelEndColorL.Text = "L";
+            // 
+            // labelColorL
+            // 
+            this.labelColorL.AutoSize = true;
+            this.labelColorL.Location = new System.Drawing.Point(97, 207);
+            this.labelColorL.Name = "labelColorL";
+            this.labelColorL.Size = new System.Drawing.Size(17, 19);
+            this.labelColorL.TabIndex = 73;
+            this.labelColorL.Text = "L";
+            // 
+            // labelEndColorS
+            // 
+            this.labelEndColorS.AutoSize = true;
+            this.labelEndColorS.Location = new System.Drawing.Point(225, 180);
+            this.labelEndColorS.Name = "labelEndColorS";
+            this.labelEndColorS.Size = new System.Drawing.Size(18, 19);
+            this.labelEndColorS.TabIndex = 73;
+            this.labelEndColorS.Text = "S";
+            // 
+            // labelEndColorH
+            // 
+            this.labelEndColorH.AutoSize = true;
+            this.labelEndColorH.Location = new System.Drawing.Point(225, 152);
+            this.labelEndColorH.Name = "labelEndColorH";
+            this.labelEndColorH.Size = new System.Drawing.Size(20, 19);
+            this.labelEndColorH.TabIndex = 73;
+            this.labelEndColorH.Text = "H";
+            // 
+            // labelColorS
+            // 
+            this.labelColorS.AutoSize = true;
+            this.labelColorS.Location = new System.Drawing.Point(96, 180);
+            this.labelColorS.Name = "labelColorS";
+            this.labelColorS.Size = new System.Drawing.Size(18, 19);
+            this.labelColorS.TabIndex = 73;
+            this.labelColorS.Text = "S";
+            // 
+            // labelColorH
+            // 
+            this.labelColorH.AutoSize = true;
+            this.labelColorH.Location = new System.Drawing.Point(96, 152);
+            this.labelColorH.Name = "labelColorH";
+            this.labelColorH.Size = new System.Drawing.Size(20, 19);
+            this.labelColorH.TabIndex = 73;
+            this.labelColorH.Text = "H";
             // 
             // textBoxKeypointDuty
             // 
@@ -559,19 +613,6 @@
             this.BtnSetColorNowtime.Text = "N";
             this.BtnSetColorNowtime.UseVisualStyleBackColor = true;
             this.BtnSetColorNowtime.Click += new System.EventHandler(this.BtnSetColorNowtime_Click);
-            // 
-            // BtnKeypointSave
-            // 
-            this.BtnKeypointSave.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.BtnKeypointSave.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.BtnKeypointSave.Location = new System.Drawing.Point(23, 323);
-            this.BtnKeypointSave.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.BtnKeypointSave.Name = "BtnKeypointSave";
-            this.BtnKeypointSave.Size = new System.Drawing.Size(214, 45);
-            this.BtnKeypointSave.TabIndex = 69;
-            this.BtnKeypointSave.Text = "Keypoint Save";
-            this.BtnKeypointSave.UseVisualStyleBackColor = false;
-            this.BtnKeypointSave.Click += new System.EventHandler(this.BtnKeypointSave_Click);
             // 
             // textBoxBrightTransition
             // 
@@ -798,9 +839,9 @@
             this.groupBox1.Controls.Add(this.textBoxEffectEnd);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.textBoxEffectStart);
-            this.groupBox1.Location = new System.Drawing.Point(575, 247);
+            this.groupBox1.Location = new System.Drawing.Point(575, 260);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(279, 168);
+            this.groupBox1.Size = new System.Drawing.Size(279, 169);
             this.groupBox1.TabIndex = 69;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Effect Setting";
@@ -827,10 +868,10 @@
             // BtnExport
             // 
             this.BtnExport.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.BtnExport.Location = new System.Drawing.Point(18, 172);
+            this.BtnExport.Location = new System.Drawing.Point(18, 171);
             this.BtnExport.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BtnExport.Name = "BtnExport";
-            this.BtnExport.Size = new System.Drawing.Size(90, 35);
+            this.BtnExport.Size = new System.Drawing.Size(250, 52);
             this.BtnExport.TabIndex = 70;
             this.BtnExport.Text = "Export";
             this.BtnExport.UseVisualStyleBackColor = true;
@@ -848,7 +889,7 @@
             this.groupBox2.Controls.Add(this.BtnHistoryLoad);
             this.groupBox2.Location = new System.Drawing.Point(575, 18);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(279, 223);
+            this.groupBox2.Size = new System.Drawing.Size(279, 233);
             this.groupBox2.TabIndex = 71;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Global Configuration";
@@ -891,6 +932,8 @@
             this.textBoxNumberOfBalls.Name = "textBoxNumberOfBalls";
             this.textBoxNumberOfBalls.Size = new System.Drawing.Size(80, 27);
             this.textBoxNumberOfBalls.TabIndex = 67;
+            this.textBoxNumberOfBalls.TextChanged += new System.EventHandler(this.TextBoxNumberOfBalls_TextChanged);
+            this.textBoxNumberOfBalls.Leave += new System.EventHandler(this.TextBoxNumberOfBalls_Leave);
             // 
             // textBoxGlobalStarting
             // 
@@ -899,6 +942,7 @@
             this.textBoxGlobalStarting.Name = "textBoxGlobalStarting";
             this.textBoxGlobalStarting.Size = new System.Drawing.Size(98, 27);
             this.textBoxGlobalStarting.TabIndex = 67;
+            this.textBoxGlobalStarting.Leave += new System.EventHandler(this.TextBoxGlobalStarting_Leave);
             // 
             // textBoxEffectAttr1
             // 
@@ -1058,7 +1102,9 @@
             // 
             // groupBoxEffectAuto
             // 
-            this.groupBoxEffectAuto.Controls.Add(this.BtnAutoGen);
+            this.groupBoxEffectAuto.Controls.Add(this.unitEffectAttr5);
+            this.groupBoxEffectAuto.Controls.Add(this.labelEffectAttr5);
+            this.groupBoxEffectAuto.Controls.Add(this.textBoxEffectAttr5);
             this.groupBoxEffectAuto.Controls.Add(this.unitEffectAttr0);
             this.groupBoxEffectAuto.Controls.Add(this.labelEffectAttr4);
             this.groupBoxEffectAuto.Controls.Add(this.labelEffectAttr3);
@@ -1075,79 +1121,40 @@
             this.groupBoxEffectAuto.Controls.Add(this.textBoxEffectAttr2);
             this.groupBoxEffectAuto.Controls.Add(this.unitEffectAttr1);
             this.groupBoxEffectAuto.Controls.Add(this.textBoxEffectAttr1);
-            this.groupBoxEffectAuto.Location = new System.Drawing.Point(907, 18);
+            this.groupBoxEffectAuto.Location = new System.Drawing.Point(921, 18);
             this.groupBoxEffectAuto.Name = "groupBoxEffectAuto";
-            this.groupBoxEffectAuto.Size = new System.Drawing.Size(265, 392);
+            this.groupBoxEffectAuto.Size = new System.Drawing.Size(279, 411);
             this.groupBoxEffectAuto.TabIndex = 83;
             this.groupBoxEffectAuto.TabStop = false;
             this.groupBoxEffectAuto.Text = "Effects Auto Generation";
             // 
-            // BtnAutoGen
+            // labelEffectAttr5
             // 
-            this.BtnAutoGen.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.BtnAutoGen.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.BtnAutoGen.Location = new System.Drawing.Point(24, 323);
-            this.BtnAutoGen.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.BtnAutoGen.Name = "BtnAutoGen";
-            this.BtnAutoGen.Size = new System.Drawing.Size(214, 45);
-            this.BtnAutoGen.TabIndex = 83;
-            this.BtnAutoGen.Text = "Generate Keypoints";
-            this.BtnAutoGen.UseVisualStyleBackColor = false;
-            this.BtnAutoGen.Click += new System.EventHandler(this.BtnAutoGen_Click);
+            this.labelEffectAttr5.AutoSize = true;
+            this.labelEffectAttr5.Location = new System.Drawing.Point(20, 235);
+            this.labelEffectAttr5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelEffectAttr5.Name = "labelEffectAttr5";
+            this.labelEffectAttr5.Size = new System.Drawing.Size(96, 19);
+            this.labelEffectAttr5.TabIndex = 72;
+            this.labelEffectAttr5.Text = "Phase Offset";
             // 
-            // labelColorH
+            // textBoxEffectAttr5
             // 
-            this.labelColorH.AutoSize = true;
-            this.labelColorH.Location = new System.Drawing.Point(96, 152);
-            this.labelColorH.Name = "labelColorH";
-            this.labelColorH.Size = new System.Drawing.Size(20, 19);
-            this.labelColorH.TabIndex = 73;
-            this.labelColorH.Text = "H";
+            this.textBoxEffectAttr5.Location = new System.Drawing.Point(113, 232);
+            this.textBoxEffectAttr5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.textBoxEffectAttr5.Name = "textBoxEffectAttr5";
+            this.textBoxEffectAttr5.Size = new System.Drawing.Size(91, 27);
+            this.textBoxEffectAttr5.TabIndex = 71;
             // 
-            // labelColorS
+            // unitEffectAttr5
             // 
-            this.labelColorS.AutoSize = true;
-            this.labelColorS.Location = new System.Drawing.Point(96, 180);
-            this.labelColorS.Name = "labelColorS";
-            this.labelColorS.Size = new System.Drawing.Size(18, 19);
-            this.labelColorS.TabIndex = 73;
-            this.labelColorS.Text = "S";
-            // 
-            // labelColorL
-            // 
-            this.labelColorL.AutoSize = true;
-            this.labelColorL.Location = new System.Drawing.Point(97, 207);
-            this.labelColorL.Name = "labelColorL";
-            this.labelColorL.Size = new System.Drawing.Size(17, 19);
-            this.labelColorL.TabIndex = 73;
-            this.labelColorL.Text = "L";
-            // 
-            // labelEndColorH
-            // 
-            this.labelEndColorH.AutoSize = true;
-            this.labelEndColorH.Location = new System.Drawing.Point(225, 152);
-            this.labelEndColorH.Name = "labelEndColorH";
-            this.labelEndColorH.Size = new System.Drawing.Size(20, 19);
-            this.labelEndColorH.TabIndex = 73;
-            this.labelEndColorH.Text = "H";
-            // 
-            // labelEndColorS
-            // 
-            this.labelEndColorS.AutoSize = true;
-            this.labelEndColorS.Location = new System.Drawing.Point(225, 180);
-            this.labelEndColorS.Name = "labelEndColorS";
-            this.labelEndColorS.Size = new System.Drawing.Size(18, 19);
-            this.labelEndColorS.TabIndex = 73;
-            this.labelEndColorS.Text = "S";
-            // 
-            // labelEndColorL
-            // 
-            this.labelEndColorL.AutoSize = true;
-            this.labelEndColorL.Location = new System.Drawing.Point(226, 207);
-            this.labelEndColorL.Name = "labelEndColorL";
-            this.labelEndColorL.Size = new System.Drawing.Size(17, 19);
-            this.labelEndColorL.TabIndex = 73;
-            this.labelEndColorL.Text = "L";
+            this.unitEffectAttr5.AutoSize = true;
+            this.unitEffectAttr5.Location = new System.Drawing.Point(207, 235);
+            this.unitEffectAttr5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.unitEffectAttr5.Name = "unitEffectAttr5";
+            this.unitEffectAttr5.Size = new System.Drawing.Size(46, 24);
+            this.unitEffectAttr5.TabIndex = 83;
+            this.unitEffectAttr5.Text = "deg";
             // 
             // LightBallHelper
             // 
@@ -1266,7 +1273,6 @@
         private System.Windows.Forms.TextBox textBoxBrightTransition;
         private System.Windows.Forms.TextBox textBoxColorTransition;
         private System.Windows.Forms.TextBox textBoxKeypointDuration;
-        private System.Windows.Forms.Button BtnKeypointSave;
         private System.Windows.Forms.Button BtnSetStartNowtime;
         private System.Windows.Forms.Button BtnSetColorNowtime;
         private System.Windows.Forms.Button BtnSetEndNowtime;
@@ -1302,13 +1308,15 @@
         private System.Windows.Forms.Label labelEffectAttr4;
         private System.Windows.Forms.GroupBox groupBoxEffectAuto;
         private System.Windows.Forms.TextBox textBoxKeypointDuty;
-        private System.Windows.Forms.Button BtnAutoGen;
         private System.Windows.Forms.Label labelColorL;
         private System.Windows.Forms.Label labelColorS;
         private System.Windows.Forms.Label labelColorH;
         private System.Windows.Forms.Label labelEndColorL;
         private System.Windows.Forms.Label labelEndColorS;
         private System.Windows.Forms.Label labelEndColorH;
+        private System.Windows.Forms.Label labelEffectAttr5;
+        private System.Windows.Forms.TextBox textBoxEffectAttr5;
+        private System.Windows.Forms.Label unitEffectAttr5;
     }
 }
 
